@@ -3,17 +3,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
-import { type AlbumId, picsumUrl } from "@/lib/gallery/albums";
+import { getAlbumTitle } from "@/lib/gallery/locale";
+import type { GalleryAlbum } from "@/lib/gallery/types";
 
-const imageAspects = ["aspect-3/4", "aspect-3/4", "aspect-16/10", "aspect-3/4", "aspect-16/10", "aspect-3/4", "aspect-16/10", "aspect-3/4", "aspect-16/10"] as const;
+const imageAspects = [
+  "aspect-3/4",
+  "aspect-3/4",
+  "aspect-16/10",
+  "aspect-3/4",
+  "aspect-16/10",
+  "aspect-3/4",
+  "aspect-16/10",
+  "aspect-3/4",
+  "aspect-16/10",
+] as const;
 
 type AlbumViewProps = {
-  albumId: AlbumId;
-  imageSeeds: string[];
+  album: GalleryAlbum;
 };
 
-export function AlbumView({ albumId, imageSeeds }: AlbumViewProps) {
-  const { t } = useLanguage();
+export function AlbumView({ album }: AlbumViewProps) {
+  const { t, locale } = useLanguage();
+  const title = getAlbumTitle(album, locale);
 
   return (
     <div className="bg-white px-8 py-12 sm:px-12 sm:py-16">
@@ -26,17 +37,17 @@ export function AlbumView({ albumId, imageSeeds }: AlbumViewProps) {
         </Link>
 
         <h1 className="mb-12 text-center text-3xl font-bold tracking-wide text-ink-strong sm:mb-16 sm:text-4xl">
-          {t.gallery.items[albumId]}
+          {title}
         </h1>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
-          {imageSeeds.map((seed, i) => (
+          {album.images.map((image, i) => (
             <div
-              key={seed}
+              key={image.id}
               className={`overflow-hidden rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.1)] ${imageAspects[i % imageAspects.length]}`}
             >
               <Image
-                src={picsumUrl(seed, i % 3 === 2 ? 800 : 480, i % 3 === 2 ? 500 : 640)}
+                src={image.src}
                 alt=""
                 width={800}
                 height={640}
@@ -45,6 +56,10 @@ export function AlbumView({ albumId, imageSeeds }: AlbumViewProps) {
             </div>
           ))}
         </div>
+
+        {album.images.length === 0 ? (
+          <p className="text-center text-ink/70">This album has no images yet.</p>
+        ) : null}
       </div>
     </div>
   );

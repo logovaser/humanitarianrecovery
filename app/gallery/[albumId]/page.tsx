@@ -1,19 +1,17 @@
 import { notFound } from "next/navigation";
 import { AlbumView } from "@/components/AlbumView";
 import { Header } from "@/components/Header";
-import { albumIds, getAlbum } from "@/lib/gallery/albums";
+import { getAlbumBySlug } from "@/lib/gallery/service";
+
+export const dynamic = "force-dynamic";
 
 type AlbumPageProps = {
   params: Promise<{ albumId: string }>;
 };
 
-export function generateStaticParams() {
-  return albumIds.map((albumId) => ({ albumId }));
-}
-
 export default async function AlbumPage({ params }: AlbumPageProps) {
   const { albumId } = await params;
-  const album = getAlbum(albumId);
+  const album = await getAlbumBySlug(albumId);
 
   if (!album) {
     notFound();
@@ -23,7 +21,7 @@ export default async function AlbumPage({ params }: AlbumPageProps) {
     <main className="flex h-dvh flex-col">
       <Header />
       <div className="mt-20 flex-1 overflow-y-auto scroll-smooth">
-        <AlbumView albumId={album.id} imageSeeds={album.imageSeeds} />
+        <AlbumView album={album} />
       </div>
     </main>
   );

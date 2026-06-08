@@ -33,6 +33,11 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# gallery uploads and mutable data
+/public/uploads/gallery/*
+!/public/uploads/gallery/.gitkeep
+/data/gallery.json
+
 # vercel
 .vercel
 
