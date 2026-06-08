@@ -133,4 +133,16 @@ export const uk: Dictionary = {
   footer: {
     copyright: "© 2022-2025 Humanitarian Recovery. Усі права захищені.",
   },
+  gallery: {
+    title: "Галерея",
+    backToGallery: "Назад до галереї",
+    items: {
+      events: "Події організації",
+      demining: "Гуманітарне розмінування України",
+      activity: "Діяльність організації, 2022–2025",
+      training: "Навчання громад",
+      fieldWork: "Польова робота",
+      partners: "Партнери та співпраця",
+    },
+  },
 };

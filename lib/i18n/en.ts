@@ -130,4 +130,16 @@ export const en = {
   footer: {
     copyright: "© 2022-2025 Humanitarian Recovery. All rights reserved.",
   },
+  gallery: {
+    title: "Gallery",
+    backToGallery: "Back to gallery",
+    items: {
+      events: "Organization events",
+      demining: "Humanitarian demining of Ukraine",
+      activity: "Organization activity, 2022–2025",
+      training: "Community training",
+      fieldWork: "Field operations",
+      partners: "Partners and cooperation",
+    },
+  },
 } as const;

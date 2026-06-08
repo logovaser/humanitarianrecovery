@@ -14,7 +14,7 @@ export function Header() {
       <Image src={hrLogo.src} alt={t.common.logoAlt} width={164} height={64} />
 
       <div className="flex items-center gap-2">
-        <Link href="/" className="p-4">
+        <Link href="/gallery" className="p-4">
           {t.header.gallery}
         </Link>
         <Link href="/" className="p-4">
