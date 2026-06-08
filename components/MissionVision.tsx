@@ -1,28 +1,33 @@
+"use client";
+
 import { EyeIcon, TargetIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function MissionVision() {
+  const { t } = useLanguage();
+
   return (
     <PageSection id="mission-vision" className="grid grid-cols-2 p-0">
       <Column
-        title="Mission"
+        title={t.missionVision.mission}
         topClass="bg-brand"
         bottomClass="bg-white"
         circleClass="bg-brand-dark"
         icon={<TargetIcon className="h-9 w-9 text-white" />}
       >
-        To protect civilians and support communities affected by explosive threats.
+        {t.missionVision.missionText}
       </Column>
 
       <Column
-        title="Vision"
+        title={t.missionVision.vision}
         topClass="bg-brand-dark"
         bottomClass="bg-surface"
         circleClass="bg-brand"
         icon={<EyeIcon className="h-9 w-9 text-white" />}
       >
-        A safe, resilient, and sustainably recovering Ukraine.
+        {t.missionVision.visionText}
       </Column>
 
       <SectionFooter showLogo={false} />

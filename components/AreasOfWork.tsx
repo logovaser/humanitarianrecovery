@@ -1,27 +1,35 @@
+"use client";
+
 import Image from "next/image";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
-
-const rows: { tag: string | null; text: string }[] = [
-  { tag: "EORE", text: "risk education for communities" },
-  { tag: "NTS", text: "identification and mapping of hazardous areas" },
-  { tag: "Humanitarian Assistance", text: "support to vulnerable groups" },
-  { tag: null, text: "Community Training & Capacity Building" },
-  { tag: "MVA", text: "Mine Victim Assistance" },
-];
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function AreasOfWork() {
+  const { t } = useLanguage();
+
+  const rows: { tag: string | null; text: string }[] = [
+    { tag: t.areasOfWork.tags.eore, text: t.areasOfWork.eore },
+    { tag: t.areasOfWork.tags.nts, text: t.areasOfWork.nts },
+    {
+      tag: t.areasOfWork.tags.humanitarianAssistance,
+      text: t.areasOfWork.humanitarianAssistance,
+    },
+    { tag: null, text: t.areasOfWork.communityTraining },
+    { tag: t.areasOfWork.tags.mva, text: t.areasOfWork.mva },
+  ];
+
   return (
     <PageSection id="areas" bg="from-white to-white">
       <div className="mx-auto grid max-w-[1024px] grid-cols-1 items-center gap-12 px-8 py-14 sm:px-12 md:grid-cols-[0.82fr_1.18fr]">
         <div className="relative mx-auto w-full max-w-[330px]">
           <div className="relative z-10 rounded-[44px] bg-brand px-7 py-9 shadow-[0_10px_25px_rgba(0,0,0,0.12)]">
-            <h2 className="text-4xl font-bold leading-tight text-white">Areas of Work</h2>
+            <h2 className="text-4xl font-bold leading-tight text-white">{t.areasOfWork.title}</h2>
           </div>
           <div className="-mt-5 overflow-hidden rounded-[26px] shadow-[0_12px_30px_rgba(0,0,0,0.15)]">
             <Image
               src="/images/areas.png"
-              alt="Community risk education session in the field"
+              alt={t.areasOfWork.imageAlt}
               width={298}
               height={300}
               className="h-full w-full object-cover"

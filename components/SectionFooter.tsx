@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function SectionFooter({
   variant = "light",
@@ -7,7 +10,9 @@ export function SectionFooter({
   variant?: "light" | "green";
   showLogo?: boolean;
 }) {
+  const { t } = useLanguage();
   const green = variant === "green";
+
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center px-8 pb-4 sm:px-12">
       <div className="w-1/4">
@@ -26,7 +31,7 @@ export function SectionFooter({
           green ? "text-white/55" : "text-footer"
         }`}
       >
-        © 2022-2025 Humanitarian Recovery. All rights reserved.
+        {t.footer.copyright}
       </p>
       <div className="w-1/4" />
     </div>

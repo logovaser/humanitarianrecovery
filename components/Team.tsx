@@ -4,75 +4,39 @@ import Image from "next/image";
 import { useState } from "react";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
+import { useLanguage } from "@/components/LanguageProvider";
 
-type Member = {
-  tab: string;
-  name: string;
-  role: string;
-  photo?: string;
-  points: string[];
-};
-
-const members: Member[] = [
-  {
-    tab: "Head of Organization",
-    name: "Kateryna Anikina",
-    role: "Founder & Head",
-    points: [
-      "Lawyer, advocate, humanitarian project manager",
-      "Experience: EORE, NTS, certification processes",
-      "Strong legal & operational background",
-      "Multiyear humanitarian field experience",
-    ],
-  },
-  {
-    tab: "Project Manager",
-    name: "Ulyana Symonenko",
-    role: "Project Manager / Grant Writer",
-    points: [
-      "Humanitarian project coordination (EORE/CPP)",
-      "Grant writing, donor communication, budgeting",
-      "BCM & Change Management expert",
-      "Cross-functional team leadership",
-    ],
-  },
-  {
-    tab: "Operations Manager",
-    name: "Oleksandr Bilotil",
-    role: "Operations Manager",
-    photo: "/images/ops.png",
-    points: [
-      "30+ years in civil protection & emergency operations",
-      "Senior roles in SESU, training centers, demining projects",
-      "Expert in certification, land release, operational setup",
-      "Retired Colonel, combat veteran",
-    ],
-  },
-  {
-    tab: "QA Manager",
-    name: "Dmytro Filippov",
-    role: "Quality Assurance Manager",
-    points: [
-      "IMAS Level 1 EOD, NTS, TS, Clearance specialist",
-      "Quality management & internal audits",
-      "Former SESU EOD team leader",
-      "War veteran, senior lieutenant (ret.)",
-    ],
-  },
+const memberKeys = ["head", "pm", "ops", "qa"] as const;
+const memberNames = [
+  "Kateryna Anikina",
+  "Ulyana Symonenko",
+  "Oleksandr Bilotil",
+  "Dmytro Filippov",
 ];
+const memberPhotos: (string | undefined)[] = [undefined, undefined, "/images/ops.png", undefined];
 
 export function Team() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
+
+  const members = memberKeys.map((key, i) => ({
+    tab: t.team.members[key].tab,
+    name: memberNames[i],
+    role: t.team.members[key].role,
+    photo: memberPhotos[i],
+    points: t.team.members[key].points,
+  }));
+
   const member = members[active];
 
   return (
     <PageSection id="team" bg="from-white to-white" className="flex flex-col overflow-hidden p-0">
       <div className="flex flex-col gap-5 bg-brand px-8 py-6 sm:px-12 lg:flex-row lg:items-center">
-        <h2 className="text-3xl font-bold text-white sm:text-4xl lg:mr-4">Team</h2>
+        <h2 className="text-3xl font-bold text-white sm:text-4xl lg:mr-4">{t.team.title}</h2>
         <div className="flex flex-wrap gap-2.5">
           {members.map((m, i) => (
             <button
-              key={m.tab}
+              key={m.name}
               type="button"
               onClick={() => setActive(i)}
               className={`rounded-full px-5 py-2.5 text-sm font-bold transition-colors sm:text-[15px] ${

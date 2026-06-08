@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { PageSection } from "@/components/PageSection";
-import logoLargeWhite from "@/images/logo-large-white.png";
+import { useLanguage } from "@/components/LanguageProvider";
 import heroBg from "@/images/hero-bg.jpg";
 import hrLogo from "@/images/HR logo 2.svg";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <PageSection id="hero" bgImage={heroBg.src}>
       <div className="absolute left-1/2 -top-10 z-0 -translate-x-1/2 flex flex-col items-center">
@@ -24,10 +28,10 @@ export function Hero() {
         </div>
 
         <h1 className="mt-16 text-center max-w-3xl font-semibold  text-white text-5xl">
-          Ukrainian National
+          {t.hero.line1}
         </h1>
         <h1 className="text-center max-w-3xl font-semibold  text-white text-5xl">
-          Mine Actional Operator
+          {t.hero.line2}
         </h1>
       </div>
     </PageSection>

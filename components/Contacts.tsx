@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { GlobeIcon, MailIcon, PhoneIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const rows = [
   {
@@ -24,10 +27,12 @@ const rows = [
 ];
 
 export function Contacts() {
+  const { t } = useLanguage();
+
   return (
     <PageSection id="contacts" className="grid grid-cols-1 p-0 md:grid-cols-2">
       <div className="flex flex-col bg-brand-dark px-8 py-12 sm:px-14">
-        <h2 className="text-5xl font-bold text-white sm:text-6xl">Contacts</h2>
+        <h2 className="text-5xl font-bold text-white sm:text-6xl">{t.contacts.title}</h2>
         <div className="flex flex-1 items-center justify-center py-10">
           <Image
             src="/images/logo-white.png"
@@ -40,9 +45,7 @@ export function Contacts() {
       </div>
 
       <div className="flex flex-col justify-center gap-7 bg-brand px-8 py-14 sm:px-14">
-        <h3 className="text-3xl font-medium text-white sm:text-[34px]">
-          Humanitarian Recovery NGO
-        </h3>
+        <h3 className="text-3xl font-medium text-white sm:text-[34px]">{t.contacts.orgName}</h3>
         <div className="space-y-5">
           {rows.map((row) => (
             <a

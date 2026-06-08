@@ -1,26 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import { CrosshairIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
-
-const focusRows = [
-  { tag: "EORE", text: "Explosive Ordnance Risk Education" },
-  { tag: "NTS", text: "Explosive Ordnance Risk Education" },
-  { tag: "MVA", text: "Mine Victim Assistance" },
-];
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function About() {
+  const { t } = useLanguage();
+
+  const focusRows = [
+    { tag: "EORE", text: t.about.eore },
+    { tag: "NTS", text: t.about.nts },
+    { tag: "MVA", text: t.about.mva },
+  ];
+
   return (
     <PageSection id="about" bg="from-surface to-surface">
       <header className="grid grid-cols-1 md:grid-cols-2">
         <div className="rounded-br-[55px] bg-brand px-8 py-8 sm:px-12 md:py-12">
           <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-[42px]">
-            About the Organization
+            {t.about.title}
           </h2>
         </div>
         <div className="flex items-center px-8 py-6 sm:px-12">
           <p className="text-lg leading-snug text-ink sm:text-xl">
-            Humanitarian Recovery —<br />a national NGO established in 2022.
+            {t.about.subtitle}
+            <br />
+            {t.about.subtitleLine2}
           </p>
         </div>
       </header>
@@ -31,7 +38,7 @@ export function About() {
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-dark">
               <CrosshairIcon className="h-5 w-5" />
             </span>
-            <span className="text-lg font-bold">Focus areas:</span>
+            <span className="text-lg font-bold">{t.about.focusAreas}</span>
           </div>
 
           <div className="space-y-4">
@@ -47,7 +54,7 @@ export function About() {
               </div>
             ))}
             <div className="rounded-[30px] bg-white px-6 py-4 text-[15px] text-ink shadow-[0_6px_18px_rgba(0,0,0,0.06)] sm:text-base">
-              Community training and humanitarian support
+              {t.about.communityTraining}
             </div>
           </div>
         </div>
@@ -55,7 +62,7 @@ export function About() {
         <div className="overflow-hidden rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
           <Image
             src="/images/about.png"
-            alt="Humanitarian Recovery field work and community training"
+            alt={t.about.imageAlt}
             width={482}
             height={322}
             className="h-full w-full object-cover"
