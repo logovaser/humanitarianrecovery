@@ -3,7 +3,7 @@ import { SectionFooter } from "@/components/SectionFooter";
 
 export function Partners() {
   return (
-    <PageSection id="partners" bg="from-brand to-brand" className="flex flex-col justify-center overflow-hidden p-0">
+    <PageSection id="partners" bg="from-brand to-brand">
       <div className="relative mx-auto max-w-[1024px] px-8 py-16 sm:px-12 sm:py-20">
         <h2 className="static mb-8 text-5xl font-bold text-white sm:absolute sm:left-12 sm:top-1/2 sm:mb-0 sm:z-10 sm:-translate-y-1/2 sm:text-6xl">
           Partners

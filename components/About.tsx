@@ -11,8 +11,8 @@ const focusRows = [
 
 export function About() {
   return (
-    <PageSection id="about" bg="from-surface to-surface" className="flex flex-col justify-center overflow-hidden p-0">
-      <header className="grid grid-cols-1 md:grid-cols-[1.04fr_0.96fr]">
+    <PageSection id="about" bg="from-surface to-surface">
+      <header className="grid grid-cols-1 md:grid-cols-2">
         <div className="rounded-br-[55px] bg-brand px-8 py-8 sm:px-12 md:py-12">
           <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-[42px]">
             About the Organization

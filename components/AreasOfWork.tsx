@@ -12,7 +12,7 @@ const rows: { tag: string | null; text: string }[] = [
 
 export function AreasOfWork() {
   return (
-    <PageSection id="areas" bg="from-white to-white" className="flex flex-col justify-center overflow-hidden p-0">
+    <PageSection id="areas" bg="from-white to-white">
       <div className="mx-auto grid max-w-[1024px] grid-cols-1 items-center gap-12 px-8 py-14 sm:px-12 md:grid-cols-[0.82fr_1.18fr]">
         <div className="relative mx-auto w-full max-w-[330px]">
           <div className="relative z-10 rounded-[44px] bg-brand px-7 py-9 shadow-[0_10px_25px_rgba(0,0,0,0.12)]">

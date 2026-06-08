@@ -4,7 +4,7 @@ import { SectionFooter } from "@/components/SectionFooter";
 
 export function Geography() {
   return (
-    <PageSection id="geography" bg="from-brand to-brand" className="flex flex-col justify-center overflow-hidden p-0">
+    <PageSection id="geography" bg="from-brand to-brand">
       <Image
         src="/images/geo.png"
         alt=""

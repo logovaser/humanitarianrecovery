@@ -11,7 +11,7 @@ const items = [
 
 export function MineVictimAssistance() {
   return (
-    <PageSection id="mva" bg="from-white to-white" className="flex flex-col justify-center overflow-hidden p-0">
+    <PageSection id="mva" bg="from-white to-white">
       <div className="mx-auto grid max-w-[1024px] grid-cols-1 items-center gap-12 px-8 py-14 sm:px-12 md:grid-cols-2">
         <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[26px] shadow-[0_14px_34px_rgba(0,0,0,0.16)]">
           <div className="bg-brand px-6 py-5">
