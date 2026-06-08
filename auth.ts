@@ -1,14 +1,9 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import Google from "next-auth/providers/google";
 import { getAdminEmails, isAllowedAdminEmail, verifyAdminPassword } from "@/lib/auth/admin";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),
     Credentials({
       name: "Credentials",
       credentials: {
@@ -38,12 +33,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async signIn({ user, account }) {
-      if (account?.provider === "google") {
-        return isAllowedAdminEmail(user.email);
-      }
-      return true;
-    },
     async jwt({ token, user }) {
       if (user?.email) {
         token.email = user.email;
@@ -63,6 +52,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 export function hasAdminConfig() {
   const emails = getAdminEmails();
   const hasPassword = Boolean(process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH);
-  const hasGoogle = Boolean(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
-  return emails.length > 0 && (hasPassword || hasGoogle);
+  return emails.length > 0 && hasPassword;
 }
