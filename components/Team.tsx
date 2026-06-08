@@ -7,12 +7,6 @@ import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const memberKeys = ["head", "pm", "ops", "qa"] as const;
-const memberNames = [
-  "Kateryna Anikina",
-  "Ulyana Symonenko",
-  "Oleksandr Bilotil",
-  "Dmytro Filippov",
-];
 const memberPhotos: (string | undefined)[] = [undefined, undefined, "/images/ops.png", undefined];
 
 export function Team() {
@@ -21,7 +15,7 @@ export function Team() {
 
   const members = memberKeys.map((key, i) => ({
     tab: t.team.members[key].tab,
-    name: memberNames[i],
+    name: t.team.members[key].name,
     role: t.team.members[key].role,
     photo: memberPhotos[i],
     points: t.team.members[key].points,

@@ -1,4 +1,15 @@
 export const en = {
+  meta: {
+    title: "Humanitarian Recovery — Ukrainian National Mine Action Operator",
+    description:
+      "Humanitarian Recovery is a national NGO established in 2022, working to protect civilians and support communities affected by explosive threats across Ukraine through EORE, NTS, Mine Victim Assistance and community training.",
+  },
+  common: {
+    logoAlt: "Humanitarian Recovery logo",
+    heroLogoAlt: "Humanitarian Recovery large logo",
+    orgName: "Humanitarian Recovery",
+    languageSwitcherLabel: "Language",
+  },
   header: {
     gallery: "Gallery",
     educationRequest: "Education Request",
@@ -14,8 +25,13 @@ export const en = {
     subtitleLine2: "a national NGO established in 2022.",
     focusAreas: "Focus areas:",
     eore: "Explosive Ordnance Risk Education",
-    nts: "Explosive Ordnance Risk Education",
+    nts: "Non-Technical Survey",
     mva: "Mine Victim Assistance",
+    tags: {
+      eore: "EORE",
+      nts: "NTS",
+      mva: "MVA",
+    },
     communityTraining: "Community training and humanitarian support",
     imageAlt: "Humanitarian Recovery field work and community training",
   },
@@ -59,6 +75,7 @@ export const en = {
     title: "Team",
     members: {
       head: {
+        name: "Kateryna Anikina",
         tab: "Head of Organization",
         role: "Founder & Head",
         points: [
@@ -69,6 +86,7 @@ export const en = {
         ],
       },
       pm: {
+        name: "Ulyana Symonenko",
         tab: "Project Manager",
         role: "Project Manager / Grant Writer",
         points: [
@@ -79,6 +97,7 @@ export const en = {
         ],
       },
       ops: {
+        name: "Oleksandr Bilotil",
         tab: "Operations Manager",
         role: "Operations Manager",
         points: [
@@ -89,6 +108,7 @@ export const en = {
         ],
       },
       qa: {
+        name: "Dmytro Filippov",
         tab: "QA Manager",
         role: "Quality Assurance Manager",
         points: [

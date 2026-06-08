@@ -19,7 +19,7 @@ export function SectionFooter({
         {showLogo && (
           <Image
             src={green ? "/images/logo-white.png" : "/images/logo-green.png"}
-            alt="Humanitarian Recovery"
+            alt={t.common.orgName}
             width={150}
             height={120}
             className="h-7 w-auto sm:h-8"

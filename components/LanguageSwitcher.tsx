@@ -4,13 +4,13 @@ import { localeLabels, type Locale } from "@/lib/i18n";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function LanguageSwitcher() {
-  const { locale, setLocale } = useLanguage();
+  const { locale, setLocale, t } = useLanguage();
 
   return (
     <div
       className="flex items-center rounded-full bg-white/15 p-1"
       role="group"
-      aria-label="Language"
+      aria-label={t.common.languageSwitcherLabel}
     >
       {(["en", "uk"] as const satisfies Locale[]).map((code) => (
         <button

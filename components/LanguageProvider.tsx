@@ -24,7 +24,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const dictionary = dictionaries[locale];
     document.documentElement.lang = locale === "uk" ? "uk" : "en";
+    document.title = dictionary.meta.title;
+
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+      description.setAttribute("content", dictionary.meta.description);
+    }
   }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {

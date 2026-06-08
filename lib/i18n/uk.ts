@@ -1,6 +1,17 @@
 import type { Dictionary } from "@/lib/i18n/types";
 
 export const uk: Dictionary = {
+  meta: {
+    title: "Humanitarian Recovery — Український національний оператор з протимінної діяльності",
+    description:
+      "Humanitarian Recovery — національна НУО, заснована у 2022 році. Захищаємо цивільне населення та підтримуємо громади, постраждалі від вибухових загроз по всій Україні через EORE, NTS, допомогу постраждалим від мін та навчання громад.",
+  },
+  common: {
+    logoAlt: "Логотип Humanitarian Recovery",
+    heroLogoAlt: "Великий логотип Humanitarian Recovery",
+    orgName: "Humanitarian Recovery",
+    languageSwitcherLabel: "Мова",
+  },
   header: {
     gallery: "Галерея",
     educationRequest: "Запит на навчання",
@@ -16,8 +27,13 @@ export const uk: Dictionary = {
     subtitleLine2: "національна НУО, заснована у 2022 році.",
     focusAreas: "Напрямки роботи:",
     eore: "Навчання з ризиків від вибухонебезпечних предметів",
-    nts: "Навчання з ризиків від вибухонебезпечних предметів",
+    nts: "Нетехнічне обстеження",
     mva: "Допомога постраждалим від мін",
+    tags: {
+      eore: "EORE",
+      nts: "NTS",
+      mva: "MVA",
+    },
     communityTraining: "Навчання громад та гуманітарна підтримка",
     imageAlt: "Польова робота Humanitarian Recovery та навчання громад",
   },
@@ -62,6 +78,7 @@ export const uk: Dictionary = {
     title: "Команда",
     members: {
       head: {
+        name: "Катерина Анікіна",
         tab: "Керівник організації",
         role: "Засновниця та керівниця",
         points: [
@@ -72,6 +89,7 @@ export const uk: Dictionary = {
         ],
       },
       pm: {
+        name: "Уляна Симоненко",
         tab: "Менеджерка проєктів",
         role: "Менеджерка проєктів / грантрайтерка",
         points: [
@@ -82,6 +100,7 @@ export const uk: Dictionary = {
         ],
       },
       ops: {
+        name: "Олександр Білотіл",
         tab: "Операційний менеджер",
         role: "Операційний менеджер",
         points: [
@@ -92,6 +111,7 @@ export const uk: Dictionary = {
         ],
       },
       qa: {
+        name: "Дмитро Філіпов",
         tab: "Менеджер з якості",
         role: "Менеджер з забезпечення якості",
         points: [

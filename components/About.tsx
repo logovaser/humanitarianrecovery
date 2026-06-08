@@ -10,9 +10,9 @@ export function About() {
   const { t } = useLanguage();
 
   const focusRows = [
-    { tag: "EORE", text: t.about.eore },
-    { tag: "NTS", text: t.about.nts },
-    { tag: "MVA", text: t.about.mva },
+    { tag: t.about.tags.eore, text: t.about.eore },
+    { tag: t.about.tags.nts, text: t.about.nts },
+    { tag: t.about.tags.mva, text: t.about.mva },
   ];
 
   return (

@@ -18,7 +18,7 @@ export function Hero() {
         >
           <Image
             src={hrLogo.src}
-            alt="Large white logo"
+            alt={t.common.heroLogoAlt}
             className="w-[400px]"
             draggable={false}
             width={240}

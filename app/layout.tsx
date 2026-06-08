@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
+import { en } from "@/lib/i18n/en";
+
 export const metadata: Metadata = {
-  title: "Humanitarian Recovery — Ukrainian National Mine Action Operator",
-  description:
-    "Humanitarian Recovery is a national NGO established in 2022, working to protect civilians and support communities affected by explosive threats across Ukraine through EORE, NTS, Mine Victim Assistance and community training.",
+  title: en.meta.title,
+  description: en.meta.description,
   icons: { icon: "/images/logo-green.png" },
 };
 

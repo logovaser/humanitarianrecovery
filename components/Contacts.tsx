@@ -36,7 +36,7 @@ export function Contacts() {
         <div className="flex flex-1 items-center justify-center py-10">
           <Image
             src="/images/logo-white.png"
-            alt="Humanitarian Recovery"
+            alt={t.common.orgName}
             width={340}
             height={270}
             className="w-[62%] max-w-[300px]"
