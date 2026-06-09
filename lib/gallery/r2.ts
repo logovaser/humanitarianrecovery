@@ -12,6 +12,25 @@ const client = new S3Client({
 const bucket = process.env.R2_BUCKET_NAME!;
 const publicUrl = (process.env.R2_PUBLIC_URL ?? "").replace(/\/$/, "");
 
+export async function uploadToR2WithPrefix(
+  buffer: Buffer,
+  mimeType: string,
+  ext: string,
+  prefix: string,
+) {
+  const { randomUUID } = await import("crypto");
+  const key = `${prefix}/${randomUUID()}.${ext}`;
+  await client.send(
+    new PutObjectCommand({
+      Bucket: bucket,
+      Key: key,
+      Body: buffer,
+      ContentType: mimeType,
+    }),
+  );
+  return `${publicUrl}/${key}`;
+}
+
 export async function uploadToR2(buffer: Buffer, mimeType: string, ext: string, albumSlug: string) {
   const { randomUUID } = await import("crypto");
   const key = `gallery/${albumSlug}/${randomUUID()}.${ext}`;

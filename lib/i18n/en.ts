@@ -73,52 +73,6 @@ export const en = {
   },
   team: {
     title: "Team",
-    members: {
-      head: {
-        name: "Kateryna Anikina",
-        tab: "Head of Organization",
-        role: "Founder & Head",
-        points: [
-          "Lawyer, advocate, humanitarian project manager",
-          "Experience: EORE, NTS, certification processes",
-          "Strong legal & operational background",
-          "Multiyear humanitarian field experience",
-        ],
-      },
-      pm: {
-        name: "Ulyana Symonenko",
-        tab: "Project Manager",
-        role: "Project Manager / Grant Writer",
-        points: [
-          "Humanitarian project coordination (EORE/CPP)",
-          "Grant writing, donor communication, budgeting",
-          "BCM & Change Management expert",
-          "Cross-functional team leadership",
-        ],
-      },
-      ops: {
-        name: "Oleksandr Bilotil",
-        tab: "Operations Manager",
-        role: "Operations Manager",
-        points: [
-          "30+ years in civil protection & emergency operations",
-          "Senior roles in SESU, training centers, demining projects",
-          "Expert in certification, land release, operational setup",
-          "Retired Colonel, combat veteran",
-        ],
-      },
-      qa: {
-        name: "Dmytro Filippov",
-        tab: "QA Manager",
-        role: "Quality Assurance Manager",
-        points: [
-          "IMAS Level 1 EOD, NTS, TS, Clearance specialist",
-          "Quality management & internal audits",
-          "Former SESU EOD team leader",
-          "War veteran, senior lieutenant (ret.)",
-        ],
-      },
-    },
   },
   partners: {
     title: "Partners",

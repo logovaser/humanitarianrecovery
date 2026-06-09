@@ -15,9 +15,15 @@ export function AdminShell({ title, children }: AdminShellProps) {
             <Link href="/admin/albums" className="text-lg font-bold text-brand">
               HR Admin
             </Link>
-            <nav className="text-sm font-semibold">
+            <nav className="flex gap-5 text-sm font-semibold">
               <Link href="/admin/albums" className="text-ink hover:text-brand">
-                Gallery albums
+                Gallery
+              </Link>
+              <Link href="/admin/team" className="text-ink hover:text-brand">
+                Team
+              </Link>
+              <Link href="/admin/partners" className="text-ink hover:text-brand">
+                Partners
               </Link>
             </nav>
           </div>
