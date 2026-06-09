@@ -8,8 +8,11 @@ import { MineVictimAssistance } from "@/components/MineVictimAssistance";
 import { MissionVision } from "@/components/MissionVision";
 import { Partners } from "@/components/Partners";
 import { Team } from "@/components/Team";
+import { getTeamMembers } from "@/lib/team/service";
 
-export default function Home() {
+export default async function Home() {
+  const teamMembers = await getTeamMembers();
+
   return (
     <main className="h-dvh max-h-dvh flex flex-col">
       <Header />
@@ -20,7 +23,7 @@ export default function Home() {
         <AreasOfWork />
         <MineVictimAssistance />
         <Geography />
-        <Team />
+        <Team members={teamMembers} />
         <Partners />
         <Contacts />
       </div>

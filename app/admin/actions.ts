@@ -7,6 +7,7 @@ import {
   createAlbum,
   deleteAlbum,
   deleteImageFromAlbum,
+  getAlbumById,
   setAlbumCover,
   updateAlbum,
 } from "@/lib/gallery/service";
@@ -58,7 +59,10 @@ export async function uploadAlbumImageAction(albumId: string, formData: FormData
     throw new Error("No image selected");
   }
 
-  const src = await saveGalleryUpload(file);
+  const album = await getAlbumById(albumId);
+  if (!album) throw new Error("Album not found");
+
+  const src = await saveGalleryUpload(file, album.slug);
   const image = await addImageToAlbum(albumId, src);
   revalidateGallery();
   return image;

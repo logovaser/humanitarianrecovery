@@ -1,0 +1,88 @@
+{
+  "members": [
+    {
+      "id": "d1a00001-0000-0000-0000-000000000001",
+      "nameEn": "Kateryna Anikina",
+      "nameUk": "Катерина Анікіна",
+      "roleEn": "Founder & Head",
+      "roleUk": "Засновниця та керівниця",
+      "pointsEn": [
+        "Lawyer, advocate, humanitarian project manager",
+        "Experience: EORE, NTS, certification processes",
+        "Strong legal & operational background",
+        "Multiyear humanitarian field experience"
+      ],
+      "pointsUk": [
+        "Юрист, адвокат, менеджерка гуманітарних проєктів",
+        "Досвід: EORE, NTS, процеси сертифікації",
+        "Сильний юридичний та операційний бекграунд",
+        "Багаторічний досвід гуманітарної польової роботи"
+      ],
+      "photo": null,
+      "sortOrder": 0
+    },
+    {
+      "id": "d1a00002-0000-0000-0000-000000000002",
+      "nameEn": "Ulyana Symonenko",
+      "nameUk": "Уляна Симоненко",
+      "roleEn": "Project Manager / Grant Writer",
+      "roleUk": "Менеджерка проєктів / грантрайтерка",
+      "pointsEn": [
+        "Humanitarian project coordination (EORE/CPP)",
+        "Grant writing, donor communication, budgeting",
+        "BCM & Change Management expert",
+        "Cross-functional team leadership"
+      ],
+      "pointsUk": [
+        "Координація гуманітарних проєктів (EORE/CPP)",
+        "Грантрайтинг, комунікація з донорами, бюджетування",
+        "Експертка з BCM та управління змінами",
+        "Керівництво міжфункціональними командами"
+      ],
+      "photo": null,
+      "sortOrder": 1
+    },
+    {
+      "id": "d1a00003-0000-0000-0000-000000000003",
+      "nameEn": "Oleksandr Bilotil",
+      "nameUk": "Олександр Білотіл",
+      "roleEn": "Operations Manager",
+      "roleUk": "Операційний менеджер",
+      "pointsEn": [
+        "30+ years in civil protection & emergency operations",
+        "Senior roles in SESU, training centers, demining projects",
+        "Expert in certification, land release, operational setup",
+        "Retired Colonel, combat veteran"
+      ],
+      "pointsUk": [
+        "30+ років у цивільному захисті та надзвичайних операціях",
+        "Керівні посади в ДСНС, навчальних центрах, проєктах з розмінування",
+        "Експерт з сертифікації, звільнення територій, операційного налаштування",
+        "Полковник у відставці, учасник бойових дій"
+      ],
+      "photo": "https://pub-608659bc1cf64d67820b096d6426cd0e.r2.dev/team/d1a00003-0000-0000-0000-000000000003/04676989-4854-4a6b-9cc9-fb8efbfe893b.png",
+      "sortOrder": 2
+    },
+    {
+      "id": "d1a00004-0000-0000-0000-000000000004",
+      "nameEn": "Dmytro Filippov",
+      "nameUk": "Дмитро Філіпов",
+      "roleEn": "Quality Assurance Manager",
+      "roleUk": "Менеджер з забезпечення якості",
+      "pointsEn": [
+        "IMAS Level 1 EOD, NTS, TS, Clearance specialist",
+        "Quality management & internal audits",
+        "Former SESU EOD team leader",
+        "War veteran, senior lieutenant (ret.)"
+      ],
+      "pointsUk": [
+        "Спеціаліст IMAS Level 1 EOD, NTS, TS, Clearance",
+        "Управління якістю та внутрішні аудити",
+        "Колишній керівник групи EOD ДСНС",
+        "Учасник війни, старший лейтенант (у відставці)"
+      ],
+      "photo": null,
+      "sortOrder": 3
+    }
+  ]
+}

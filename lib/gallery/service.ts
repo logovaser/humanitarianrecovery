@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 import { unlink } from "fs/promises";
 import path from "path";
+import { deleteFromR2, isR2Url } from "@/lib/gallery/r2";
 import { readGalleryData, writeGalleryData } from "@/lib/gallery/store";
 import type { AlbumInput, GalleryAlbum, GalleryImage } from "@/lib/gallery/types";
 
@@ -95,13 +96,16 @@ export async function updateAlbum(id: string, input: AlbumInput) {
   return data.albums[index];
 }
 
-async function deleteLocalUpload(src: string) {
-  if (!src.startsWith("/uploads/gallery/")) return;
-  const filePath = path.join(process.cwd(), "public", src);
-  try {
-    await unlink(filePath);
-  } catch {
-    // File may already be removed.
+async function deleteUpload(src: string) {
+  if (isR2Url(src)) {
+    await deleteFromR2(src);
+  } else if (src.startsWith("/uploads/gallery/")) {
+    const filePath = path.join(process.cwd(), "public", src);
+    try {
+      await unlink(filePath);
+    } catch {
+      // File may already be removed.
+    }
   }
 }
 
@@ -111,7 +115,7 @@ export async function deleteAlbum(id: string) {
   if (!album) throw new Error("Album not found");
 
   for (const image of album.images) {
-    await deleteLocalUpload(image.src);
+    await deleteUpload(image.src);
   }
 
   data.albums = data.albums.filter((item) => item.id !== id);
@@ -147,7 +151,7 @@ export async function deleteImageFromAlbum(albumId: string, imageId: string) {
   const image = album.images.find((item) => item.id === imageId);
   if (!image) throw new Error("Image not found");
 
-  await deleteLocalUpload(image.src);
+  await deleteUpload(image.src);
   album.images = album.images
     .filter((item) => item.id !== imageId)
     .map((item, index) => ({ ...item, sortOrder: index }));

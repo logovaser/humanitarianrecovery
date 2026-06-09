@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { getAdminEmails, isAllowedAdminEmail, verifyAdminPassword } from "@/lib/auth/admin";
+import { isAllowedAdminEmail, verifyAdminPassword } from "@/lib/auth/admin";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
@@ -50,7 +50,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 });
 
 export function hasAdminConfig() {
-  const emails = getAdminEmails();
-  const hasPassword = Boolean(process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD_HASH);
-  return emails.length > 0 && hasPassword;
+  return Boolean(process.env.ADMIN_EMAILS && process.env.ADMIN_PASSWORD);
 }

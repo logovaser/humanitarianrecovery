@@ -3,8 +3,6 @@ import { AlbumView } from "@/components/AlbumView";
 import { Header } from "@/components/Header";
 import { getAlbumBySlug } from "@/lib/gallery/service";
 
-export const dynamic = "force-dynamic";
-
 type AlbumPageProps = {
   params: Promise<{ albumId: string }>;
 };

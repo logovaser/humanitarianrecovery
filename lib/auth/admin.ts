@@ -1,5 +1,3 @@
-import bcrypt from "bcryptjs";
-
 export function getAdminEmails() {
   const raw = process.env.ADMIN_EMAILS ?? process.env.ADMIN_EMAIL ?? "";
   return raw
@@ -15,15 +13,7 @@ export function isAllowedAdminEmail(email: string | null | undefined) {
 }
 
 export function verifyAdminPassword(password: string) {
-  const hash = process.env.ADMIN_PASSWORD_HASH;
-  if (hash) {
-    return bcrypt.compareSync(password, hash);
-  }
-
   const plain = process.env.ADMIN_PASSWORD;
-  if (plain) {
-    return password === plain;
-  }
-
-  return false;
+  if (!plain) return false;
+  return password === plain;
 }
