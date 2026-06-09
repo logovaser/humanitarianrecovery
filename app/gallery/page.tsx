@@ -2,8 +2,6 @@ import { Gallery } from "@/components/Gallery";
 import { Header } from "@/components/Header";
 import { getAlbums } from "@/lib/gallery/service";
 
-export const dynamic = "force-dynamic";
-
 export default async function GalleryPage() {
   const albums = await getAlbums();
 
