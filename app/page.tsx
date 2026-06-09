@@ -11,7 +11,7 @@ import { Team } from "@/components/Team";
 
 export default function Home() {
   return (
-    <main className="h-dvh flex flex-col">
+    <main className="h-dvh max-h-dvh flex flex-col">
       <Header />
       <div className="flex-1 mt-20 snap-y snap-mandatory overflow-x-hidden overflow-y-auto scroll-smooth">
         <Hero />

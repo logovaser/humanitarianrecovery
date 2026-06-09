@@ -5,6 +5,7 @@ import { CrosshairIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
+import aboutImage from "@/images/image10.png";
 
 export function About() {
   const { t } = useLanguage();
@@ -59,15 +60,13 @@ export function About() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
-          <Image
-            src="/images/about.png"
-            alt={t.about.imageAlt}
-            width={482}
-            height={322}
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <Image
+          src={aboutImage.src}
+          alt={t.about.imageAlt}
+          width={482}
+          height={322}
+          className="rounded-3xl shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
+        />
       </div>
 
       <SectionFooter />

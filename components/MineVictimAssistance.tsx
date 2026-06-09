@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
+import mvaImage from "@/images/image12.jpeg";
 
 export function MineVictimAssistance() {
   const { t } = useLanguage();
@@ -23,7 +24,7 @@ export function MineVictimAssistance() {
             <h2 className="text-2xl font-bold text-white sm:text-[26px]">{t.mva.title}</h2>
           </div>
           <Image
-            src="/images/mva.png"
+            src={mvaImage.src}
             alt={t.mva.imageAlt}
             width={335}
             height={362}
