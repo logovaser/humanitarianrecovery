@@ -1,4 +1,4 @@
-import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { DeleteObjectCommand, GetObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 const client = new S3Client({
   region: "auto",
@@ -61,4 +61,26 @@ export async function deleteFromR2(src: string) {
 
 export function isR2Url(src: string) {
   return publicUrl.length > 0 && src.startsWith(`${publicUrl}/`);
+}
+
+export async function readJsonFromR2<T>(key: string, fallback: T): Promise<T> {
+  try {
+    const res = await client.send(new GetObjectCommand({ Bucket: bucket, Key: key }));
+    const body = await res.Body?.transformToString("utf-8");
+    if (!body) return fallback;
+    return JSON.parse(body) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+export async function writeJsonToR2(key: string, data: unknown): Promise<void> {
+  await client.send(
+    new PutObjectCommand({
+      Bucket: bucket,
+      Key: key,
+      Body: JSON.stringify(data, null, 2),
+      ContentType: "application/json",
+    }),
+  );
 }

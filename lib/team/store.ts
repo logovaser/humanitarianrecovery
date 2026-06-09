@@ -1,18 +1,12 @@
-import { readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonFromR2, writeJsonToR2 } from "@/lib/gallery/r2";
 import type { TeamData } from "@/lib/team/types";
 
-const dataFile = path.join(process.cwd(), "data", "team.json");
+const KEY = "data/team.json";
 
 export async function readTeamData(): Promise<TeamData> {
-  try {
-    const raw = await readFile(dataFile, "utf-8");
-    return JSON.parse(raw) as TeamData;
-  } catch {
-    return { members: [] };
-  }
+  return readJsonFromR2<TeamData>(KEY, { members: [] });
 }
 
-export async function writeTeamData(data: TeamData) {
-  await writeFile(dataFile, JSON.stringify(data, null, 2), "utf-8");
+export async function writeTeamData(data: TeamData): Promise<void> {
+  await writeJsonToR2(KEY, data);
 }

@@ -1,20 +1,12 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonFromR2, writeJsonToR2 } from "@/lib/gallery/r2";
 import type { GalleryData } from "@/lib/gallery/types";
 
-const dataDir = path.join(process.cwd(), "data");
-const dataFile = path.join(dataDir, "gallery.json");
+const KEY = "data/gallery.json";
 
 export async function readGalleryData(): Promise<GalleryData> {
-  try {
-    const raw = await readFile(dataFile, "utf-8");
-    return JSON.parse(raw) as GalleryData;
-  } catch {
-    return { albums: [] };
-  }
+  return readJsonFromR2<GalleryData>(KEY, { albums: [] });
 }
 
-export async function writeGalleryData(data: GalleryData) {
-  await mkdir(dataDir, { recursive: true });
-  await writeFile(dataFile, JSON.stringify(data, null, 2), "utf-8");
+export async function writeGalleryData(data: GalleryData): Promise<void> {
+  await writeJsonToR2(KEY, data);
 }
