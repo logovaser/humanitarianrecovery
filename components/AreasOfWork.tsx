@@ -27,13 +27,13 @@ export function AreasOfWork() {
           <div className="relative z-10 rounded-[44px] bg-brand px-7 py-9 shadow-[0_10px_25px_rgba(0,0,0,0.12)]">
             <h2 className="text-4xl font-bold leading-tight text-white">{t.areasOfWork.title}</h2>
           </div>
-            <Image
-              src={areasImage.src}
-              alt={t.areasOfWork.imageAlt}
-              width={298}
-              height={300}
-              className="h-full w-full -mt-5 rounded-4xl shadow-[0_12px_30px_rgba(0,0,0,0.15)]"
-            />
+          <Image
+            src={areasImage.src}
+            alt={t.areasOfWork.imageAlt}
+            width={298}
+            height={300}
+            className="h-full w-full -mt-5 rounded-4xl shadow-[0_12px_30px_rgba(0,0,0,0.15)]"
+          />
         </div>
 
         <div className="space-y-4">

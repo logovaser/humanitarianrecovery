@@ -39,9 +39,7 @@ async function sample(slide, points) {
     const i = (y * w + x) * ch;
     const hex =
       "#" +
-      [data[i], data[i + 1], data[i + 2]]
-        .map((v) => v.toString(16).padStart(2, "0"))
-        .join("");
+      [data[i], data[i + 1], data[i + 2]].map((v) => v.toString(16).padStart(2, "0")).join("");
     out.push(`${name}=(${x},${y}) ${hex}`);
   }
   console.log(slide, out.join("  |  "));

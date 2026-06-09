@@ -12,10 +12,7 @@ async function sampleScaled(slide, points) {
   const m = await sharp(f).metadata();
   const sx = m.width / W,
     sy = m.height / H;
-  const { data, info } = await sharp(f)
-    .ensureAlpha()
-    .raw()
-    .toBuffer({ resolveWithObject: true });
+  const { data, info } = await sharp(f).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const w = info.width,
     ch = info.channels;
   const out = [];
@@ -25,9 +22,7 @@ async function sampleScaled(slide, points) {
     const i = (y * w + x) * ch;
     const hex =
       "#" +
-      [data[i], data[i + 1], data[i + 2]]
-        .map((v) => v.toString(16).padStart(2, "0"))
-        .join("");
+      [data[i], data[i + 1], data[i + 2]].map((v) => v.toString(16).padStart(2, "0")).join("");
     out.push(`${name}=${hex}`);
   }
   console.log(slide, out.join("  "));

@@ -30,9 +30,7 @@ export function Hero() {
         <h1 className="mt-16 text-center max-w-3xl font-semibold  text-white text-5xl">
           {t.hero.line1}
         </h1>
-        <h1 className="text-center max-w-3xl font-semibold  text-white text-5xl">
-          {t.hero.line2}
-        </h1>
+        <h1 className="text-center max-w-3xl font-semibold  text-white text-5xl">{t.hero.line2}</h1>
       </div>
     </PageSection>
   );

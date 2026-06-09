@@ -30,7 +30,9 @@ export default async function AdminAlbumsPage() {
                 {cover ? (
                   <Image src={cover} alt="" fill className="object-cover" sizes="160px" />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-xs text-ink/50">No cover</div>
+                  <div className="flex h-full items-center justify-center text-xs text-ink/50">
+                    No cover
+                  </div>
                 )}
               </div>
 

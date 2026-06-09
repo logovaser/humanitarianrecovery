@@ -15,7 +15,9 @@ export function slugify(value: string) {
 }
 
 function sortAlbums(albums: GalleryAlbum[]) {
-  return [...albums].sort((a, b) => a.sortOrder - b.sortOrder || a.titleEn.localeCompare(b.titleEn));
+  return [...albums].sort(
+    (a, b) => a.sortOrder - b.sortOrder || a.titleEn.localeCompare(b.titleEn),
+  );
 }
 
 function sortImages(images: GalleryImage[]) {

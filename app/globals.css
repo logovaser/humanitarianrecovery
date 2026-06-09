@@ -12,8 +12,7 @@
   --color-surface: #f7f7f7;
   --color-footer: #b9b9b9;
 
-  --font-sans:
-    "Helvetica Neue", Helvetica, Arial, "Segoe UI", "Liberation Sans", sans-serif;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, "Segoe UI", "Liberation Sans", sans-serif;
 }
 
 html {

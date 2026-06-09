@@ -65,7 +65,14 @@ export const seedGalleryData: GalleryData = {
       "Діяльність організації, 2022–2025",
       "Organization activity, 2022–2025",
       "hr-activity-cover",
-      ["hr-activity-1", "hr-activity-2", "hr-activity-3", "hr-activity-4", "hr-activity-5", "hr-activity-6"],
+      [
+        "hr-activity-1",
+        "hr-activity-2",
+        "hr-activity-3",
+        "hr-activity-4",
+        "hr-activity-5",
+        "hr-activity-6",
+      ],
       2,
     ),
     album(

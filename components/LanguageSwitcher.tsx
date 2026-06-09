@@ -19,9 +19,7 @@ export function LanguageSwitcher() {
           onClick={() => setLocale(code)}
           aria-pressed={locale === code}
           className={`rounded-full px-3 py-1.5 text-sm font-bold transition-colors ${
-            locale === code
-              ? "bg-white text-brand shadow-sm"
-              : "text-white/85 hover:bg-white/10"
+            locale === code ? "bg-white text-brand shadow-sm" : "text-white/85 hover:bg-white/10"
           }`}
         >
           {localeLabels[code]}
