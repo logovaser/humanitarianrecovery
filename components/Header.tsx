@@ -11,13 +11,15 @@ export function Header() {
 
   return (
     <div className="fixed top-0 left-0 z-30 flex h-20 w-full items-center justify-between bg-brand px-8 font-bold text-white shadow-2xl">
-      <Image src={hrLogo.src} alt={t.common.logoAlt} width={164} height={64} />
+      <Link href="/">
+        <Image src={hrLogo.src} alt={t.common.logoAlt} width={164} height={64} />
+      </Link>
 
       <div className="flex items-center gap-2">
         <Link href="/gallery" className="p-4">
           {t.header.gallery}
         </Link>
-        <Link href="/" className="p-4">
+        <Link href="/education-request" className="p-4">
           {t.header.educationRequest}
         </Link>
         <Link href="/" className="p-4">

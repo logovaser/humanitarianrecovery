@@ -84,6 +84,23 @@ export const en = {
   footer: {
     copyright: "© 2022-2025 Humanitarian Recovery. All rights reserved.",
   },
+  educationRequest: {
+    title: "Education Request",
+    subtitle: "Submit a request for educational cooperation or assistance.",
+    organization: "Organization",
+    organizationPlaceholder: "Your organization name",
+    purpose: "Purpose",
+    purposePlaceholder: "Describe your request purpose",
+    cooperationType: "Cooperation type",
+    cooperation: "Cooperation",
+    assistance: "Assistance",
+    education: "Education",
+    submit: "Submit request",
+    submitting: "Submitting...",
+    successTitle: "Request submitted",
+    successMessage: "We will review your request and get back to you shortly.",
+    errorMessage: "Something went wrong. Please try again.",
+  },
   gallery: {
     title: "Gallery",
     backToGallery: "Back to gallery",

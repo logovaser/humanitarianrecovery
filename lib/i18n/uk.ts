@@ -87,6 +87,23 @@ export const uk: Dictionary = {
   footer: {
     copyright: "© 2022-2025 Humanitarian Recovery. Усі права захищені.",
   },
+  educationRequest: {
+    title: "Запит на навчання",
+    subtitle: "Подайте запит на освітню співпрацю або допомогу.",
+    organization: "Організація",
+    organizationPlaceholder: "Назва вашої організації",
+    purpose: "Мета",
+    purposePlaceholder: "Опишіть мету вашого запиту",
+    cooperationType: "Тип співпраці",
+    cooperation: "Співпраця",
+    assistance: "Допомога",
+    education: "Навчання",
+    submit: "Надіслати запит",
+    submitting: "Надсилається...",
+    successTitle: "Запит надіслано",
+    successMessage: "Ми розглянемо ваш запит і незабаром зв'яжемося з вами.",
+    errorMessage: "Щось пішло не так. Будь ласка, спробуйте ще раз.",
+  },
   gallery: {
     title: "Галерея",
     backToGallery: "Назад до галереї",
