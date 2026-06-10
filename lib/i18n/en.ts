@@ -69,7 +69,7 @@ export const en = {
   },
   geography: {
     title: "Geography of Work",
-    text: "Humanitarian Recovery operates across multiple regions of Ukraine.",
+    text: "Humanitarian Recovery \"Humanitarian recovery\" works where people need safety, support, and opportunities for recovery. Our work combines mine action, humanitarian assistance, and community development for a secure future for every person.",
   },
   team: {
     title: "Team",
