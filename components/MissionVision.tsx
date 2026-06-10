@@ -52,7 +52,7 @@ function Column({
 }) {
   return (
     <div className="relative flex h-full flex-col">
-      <div className={`flex basis-[46%] items-start justify-center pt-10 sm:pt-14 ${topClass}`}>
+      <div className={`flex basis-[46%] items-center justify-center ${topClass}`}>
         <h3 className="text-3xl font-bold text-white sm:text-5xl">{title}</h3>
       </div>
       <div className={`flex basis-[54%] items-center justify-center px-5 sm:px-10 ${bottomClass}`}>

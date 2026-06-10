@@ -22,17 +22,18 @@ export function AreasOfWork() {
 
   return (
     <PageSection id="areas" bg="from-white to-white">
-      <div className="mx-auto grid max-w-[1024px] grid-cols-1 items-center gap-12 px-8 py-14 sm:px-12 md:grid-cols-[0.82fr_1.18fr]">
-        <div className="relative mx-auto w-full max-w-[330px]">
-          <div className="relative z-10 rounded-[44px] bg-brand px-7 py-9 shadow-[0_10px_25px_rgba(0,0,0,0.12)]">
-            <h2 className="text-4xl font-bold leading-tight text-white">{t.areasOfWork.title}</h2>
+      <div className="flex h-full flex-col justify-center">
+      <div className="mx-auto grid grid-cols-1 items-center gap-12 px-8 py-14 sm:px-12 md:grid-cols-[1fr_1fr]">
+        <div className="mx-auto w-full max-w-[460px] overflow-hidden rounded-[26px] shadow-[0_14px_34px_rgba(0,0,0,0.16)]">
+          <div className="bg-brand px-6 py-5">
+            <h2 className="text-2xl font-bold text-white sm:text-[26px]">{t.areasOfWork.title}</h2>
           </div>
           <Image
             src={areasImage.src}
             alt={t.areasOfWork.imageAlt}
-            width={298}
-            height={300}
-            className="h-full w-full -mt-5 rounded-4xl shadow-[0_12px_30px_rgba(0,0,0,0.15)]"
+            width={335}
+            height={362}
+            className="h-full w-full object-cover"
           />
         </div>
 
@@ -53,6 +54,7 @@ export function AreasOfWork() {
             </div>
           ))}
         </div>
+      </div>
       </div>
 
       <SectionFooter />
