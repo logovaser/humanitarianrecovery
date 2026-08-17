@@ -39,6 +39,39 @@ export function EyeIcon(props: IconProps) {
   );
 }
 
+export function HeartIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 20.7 4.2 12.9a5.2 5.2 0 0 1 7.1-7.6l.7.6.7-.6a5.2 5.2 0 0 1 7.1 7.6Z" />
+    </svg>
+  );
+}
+
+export function ShieldIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 2.8 20 6v5.7c0 4.5-3.2 8.3-8 9.5-4.8-1.2-8-5-8-9.5V6Z" />
+      <path d="m8.6 12 2.4 2.4 4.4-4.6" />
+    </svg>
+  );
+}
+
 export function CrosshairIcon(props: IconProps) {
   return (
     <svg

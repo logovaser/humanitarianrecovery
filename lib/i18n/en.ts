@@ -52,9 +52,15 @@ export const en = {
   },
   missionVision: {
     mission: "Mission",
-    missionText: "To protect civilians and support communities affected by explosive threats.",
+    missionText:
+      "To protect people from danger, restore their sense of safety, and create the conditions for communities to develop sustainably and live with dignity.",
     vision: "Vision",
-    visionText: "A safe, resilient, and sustainably recovering Ukraine.",
+    visionText:
+      "A world where every person has the right to live without fear, and every community can recover, develop and build its future in safety.",
+    coreValue: "Core value",
+    coreValueText: "The person, their dignity, and their right to a safe life.",
+    principles: "Our principles",
+    principlesList: ["The safety of every person comes first.", "Recovery begins with the person."],
   },
   areasOfWork: {
     title: "Areas of Work",
