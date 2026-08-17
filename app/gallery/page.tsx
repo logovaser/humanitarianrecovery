@@ -8,7 +8,7 @@ export default async function GalleryPage() {
   return (
     <main className="flex h-dvh flex-col">
       <Header />
-      <div className="mt-20 flex-1 overflow-y-auto scroll-smooth">
+      <div className="mt-[var(--header-height)] flex-1 overflow-y-auto scroll-smooth">
         <Gallery albums={albums} />
       </div>
     </main>

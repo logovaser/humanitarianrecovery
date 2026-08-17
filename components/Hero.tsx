@@ -22,7 +22,9 @@ export function Hero() {
             /* h-auto lets the height follow the width. Without it the height
                attribute stays as a presentational hint and the logo renders
                400x80 instead of its true 3.07:1. */
-            className="h-auto w-[400px]"
+            /* min() rather than a fixed 400px: with the 24px padding either
+               side, 400 overran every phone width up to 414px. */
+            className="h-auto w-[min(400px,72vw)]"
             draggable={false}
             width={491}
             height={160}

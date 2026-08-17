@@ -10,9 +10,12 @@ import type { Partner } from "@/lib/partners/types";
 
 const SLOT_COUNT = 12;
 
-/** The heading is absolutely positioned over these two slots on sm and up,
- *  which is why they are hidden there. A partner placed in one would disappear
- *  on desktop, so they stay empty and the logos flow around them. */
+/** From md up the heading is absolutely positioned over these two slots, which
+ *  is why they are hidden there. A partner placed in one would disappear at
+ *  those widths, so they stay empty and the logos flow around them.
+ *
+ *  In the 4-column grid these are the first two cells of the second row. Below
+ *  md the grid is 2 columns and the heading sits above it, so nothing hides. */
 const RESERVED_SLOTS = new Set([4, 5]);
 
 type PartnersProps = {
@@ -35,14 +38,14 @@ export function Partners({ partners }: PartnersProps) {
           the content outgrows a short viewport, rather than clipping the first
           row off-screen. */}
       <div className="relative mx-auto flex flex-1 w-full max-w-site flex-col justify-center-safe px-8 py-16 sm:px-12 sm:py-20">
-        <h2 className="static mb-8 text-5xl font-bold text-white sm:absolute sm:left-12 sm:top-1/2 sm:z-10 sm:mb-0 sm:-translate-y-1/2 sm:text-6xl">
+        <h2 className="static mb-8 text-4xl font-bold text-white sm:text-5xl md:absolute md:left-12 md:top-1/2 md:z-10 md:mb-0 md:-translate-y-1/2 lg:text-6xl">
           {t.partners.title}
         </h2>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {slots.map((partner, i) => {
             const base = `relative h-24 overflow-hidden rounded-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:h-28 ${
-              RESERVED_SLOTS.has(i) ? "sm:invisible" : ""
+              RESERVED_SLOTS.has(i) ? "md:invisible" : ""
             }`;
 
             // Empty slots stay inert divs. Making them buttons, or animating
@@ -65,7 +68,7 @@ export function Partners({ partners }: PartnersProps) {
                   src={partner.logo}
                   alt=""
                   fill
-                  sizes="(min-width: 640px) 280px, 45vw"
+                  sizes="(min-width: 1280px) 280px, (min-width: 768px) 220px, 45vw"
                   className="object-contain p-4"
                 />
               </button>
