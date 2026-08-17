@@ -19,10 +19,13 @@ export function Hero() {
           <Image
             src={hrLogo.src}
             alt={t.common.heroLogoAlt}
-            className="w-[400px]"
+            /* h-auto lets the height follow the width. Without it the height
+               attribute stays as a presentational hint and the logo renders
+               400x80 instead of its true 3.07:1. */
+            className="h-auto w-[400px]"
             draggable={false}
-            width={240}
-            height={80}
+            width={491}
+            height={160}
             priority
           />
         </div>

@@ -54,8 +54,11 @@ export function Team({ members }: TeamProps) {
               <Image
                 src={member.photo}
                 alt={name}
+                /* Square attributes to match aspect-square. object-cover crops
+                   the photo to a square, so 260x300 described a shape that is
+                   never rendered. */
                 width={260}
-                height={300}
+                height={260}
                 className="aspect-square h-full w-full object-cover"
               />
             ) : (

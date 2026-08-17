@@ -67,9 +67,12 @@ export function About() {
         <Image
           src={aboutImage.src}
           alt={t.about.imageAlt}
+          /* 482x322 claimed 1.497 but the file is 1280x904, i.e. 1.416. With
+             h-auto the height follows whatever width the grid column gives it,
+             at the photo's real aspect. */
           width={482}
-          height={322}
-          className="rounded-3xl shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
+          height={340}
+          className="h-auto rounded-3xl shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
         />
       </div>
 

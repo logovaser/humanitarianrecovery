@@ -102,6 +102,27 @@ export const en = {
       reintegration: "community reintegration",
       livelihood: "livelihood support",
     },
+    statsTitle: "The scale of the problem",
+    stats: {
+      killed: {
+        value: "483",
+        label: "civilians killed by mines and explosive remnants of war",
+      },
+      injured: {
+        value: "1,196",
+        label: "civilians injured in the same period",
+      },
+      children: {
+        value: "1 in 9",
+        label: "of those casualties is a child",
+      },
+      contaminated: {
+        value: "132,000 km²",
+        label: "potentially contaminated, close to a quarter of Ukraine",
+      },
+    },
+    statsSource:
+      "Casualties: UN Human Rights Monitoring Mission in Ukraine, 24 February 2022 to 31 January 2026. Contamination: National Mine Action Platform, February 2026.",
   },
   geography: {
     title: "Geography of Work",
