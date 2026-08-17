@@ -18,7 +18,7 @@ export const en = {
   },
   hero: {
     line1: "Ukrainian National",
-    line2: "Mine Actional Operator",
+    line2: "Mine Action Operator",
   },
   about: {
     title: "About the Organization",
