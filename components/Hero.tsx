@@ -11,7 +11,7 @@ export function Hero() {
 
   return (
     <PageSection id="hero" bgImage={heroBg.src}>
-      <div className="absolute left-1/2 -top-10 z-0 -translate-x-1/2 flex flex-col items-center">
+      <div className="absolute left-1/2 -top-12 z-0 -translate-x-1/2 flex flex-col items-center">
         <div
           className="rounded-[48px] bg-white/15 backdrop-blur-[10px] px-6 pb-10 pt-20"
           aria-hidden="true"
@@ -19,10 +19,13 @@ export function Hero() {
           <Image
             src={hrLogo.src}
             alt={t.common.heroLogoAlt}
-            className="w-[400px]"
+            /* h-auto lets the height follow the width. Without it the height
+               attribute stays as a presentational hint and the logo renders
+               400x80 instead of its true 3.07:1. */
+            className="h-auto w-[400px]"
             draggable={false}
-            width={240}
-            height={80}
+            width={491}
+            height={160}
             priority
           />
         </div>

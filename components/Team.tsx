@@ -47,15 +47,18 @@ export function Team({ members }: TeamProps) {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-[1024px] grid-cols-1 gap-10 px-8 py-12 sm:px-12 md:grid-cols-[0.36fr_0.64fr] md:items-center">
+      <div className="mx-auto grid max-w-site flex-1 grid-cols-1 gap-10 px-8 py-12 sm:px-12 md:grid-cols-[0.36fr_0.64fr] md:items-center">
         <div className="flex flex-col items-center">
           <div className="w-full max-w-[260px] overflow-hidden rounded-[28px] shadow-[0_12px_30px_rgba(0,0,0,0.16)]">
             {member.photo ? (
               <Image
                 src={member.photo}
                 alt={name}
+                /* Square attributes to match aspect-square. object-cover crops
+                   the photo to a square, so 260x300 described a shape that is
+                   never rendered. */
                 width={260}
-                height={300}
+                height={260}
                 className="aspect-square h-full w-full object-cover"
               />
             ) : (

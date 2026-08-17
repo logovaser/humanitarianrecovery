@@ -9,6 +9,7 @@ export const en = {
     heroLogoAlt: "Humanitarian Recovery large logo",
     orgName: "Humanitarian Recovery",
     languageSwitcherLabel: "Language",
+    close: "Close",
   },
   header: {
     gallery: "Gallery",
@@ -23,6 +24,8 @@ export const en = {
     title: "About the Organization",
     subtitle: "Humanitarian Recovery —",
     subtitleLine2: "a national NGO established in 2022.",
+    purpose:
+      "We protect Ukraine's civilians and territory from the consequences of explosive ordnance. We support those who need it most: children, young people, people with disabilities and internally displaced persons.",
     focusAreas: "Focus areas:",
     eore: "Explosive Ordnance Risk Education",
     nts: "Non-Technical Survey",
@@ -34,12 +37,30 @@ export const en = {
     },
     communityTraining: "Community training and humanitarian support",
     imageAlt: "Humanitarian Recovery field work and community training",
+    approachTitle: "Our approach",
+    approach: [
+      "We know our communities",
+      "We understand the local context",
+      "We respond to needs quickly",
+      "We take responsibility for results",
+    ],
+    workTitle: "Recent work",
+    work: [
+      "Merefa, Kharkiv oblast: a shelter fitted out and explosive ordnance risk education delivered",
+      "Poltava hromada: psychosocial support for displaced people aged 60+ and teenagers, with IREX",
+    ],
   },
   missionVision: {
     mission: "Mission",
-    missionText: "To protect civilians and support communities affected by explosive threats.",
+    missionText:
+      "To protect people from danger, restore their sense of safety, and create the conditions for communities to develop sustainably and live with dignity.",
     vision: "Vision",
-    visionText: "A safe, resilient, and sustainably recovering Ukraine.",
+    visionText:
+      "A world where every person has the right to live without fear, and every community can recover, develop and build its future in safety.",
+    coreValue: "Core value",
+    coreValueText: "The person, their dignity, and their right to a safe life.",
+    principles: "Our principles",
+    principlesList: ["The safety of every person comes first.", "Recovery begins with the person."],
   },
   areasOfWork: {
     title: "Areas of Work",
@@ -55,6 +76,21 @@ export const en = {
       humanitarianAssistance: "Humanitarian Assistance",
       mva: "MVA",
     },
+    glossaryHint: "Tap an abbreviation to see what it means",
+    glossary: {
+      eore: {
+        term: "Explosive Ordnance Risk Education",
+        text: "A humanitarian practice that teaches people how to spot, avoid and report dangerous war remnants such as landmines and unexploded bombs. These programmes reduce injuries and save lives in conflict-affected regions.",
+      },
+      nts: {
+        term: "Non-Technical Survey",
+        text: "Gathering and analysing information about suspected hazardous areas without disturbing the ground. Teams interview residents, review records and observe the terrain, building a clearer picture of where contamination is likely so that clearance effort goes where it is needed.",
+      },
+      mva: {
+        term: "Mine Victim Assistance",
+        text: "The support a person needs after an explosive ordnance accident: medical care and rehabilitation, psychological and social support, referral to legal services, and help returning to work and community life. It extends to families and to the wider community affected by a loss.",
+      },
+    },
   },
   mva: {
     title: "Mine Victim Assistance",
@@ -66,23 +102,80 @@ export const en = {
       reintegration: "community reintegration",
       livelihood: "livelihood support",
     },
+    statsTitle: "The scale of the problem",
+    stats: {
+      killed: {
+        value: "483",
+        label: "civilians killed by mines and explosive remnants of war",
+      },
+      injured: {
+        value: "1,196",
+        label: "civilians injured in the same period",
+      },
+      children: {
+        value: "1 in 9",
+        label: "of those casualties is a child",
+      },
+      contaminated: {
+        value: "132,000 km²",
+        label: "potentially contaminated, close to a quarter of Ukraine",
+      },
+    },
+    statsSource:
+      "Casualties: UN Human Rights Monitoring Mission in Ukraine, 24 February 2022 to 31 January 2026. Contamination: National Mine Action Platform, February 2026.",
   },
   geography: {
     title: "Geography of Work",
-    text: "Humanitarian Recovery \"Humanitarian recovery\" works where people need safety, support, and opportunities for recovery. Our work combines mine action, humanitarian assistance, and community development for a secure future for every person.",
+    text: 'Humanitarian Recovery "Humanitarian recovery" works where people need safety, support, and opportunities for recovery. Our work combines mine action, humanitarian assistance, and community development for a secure future for every person.',
+    mapLabel: "Map of Ukraine",
+    hint: "Select a region to send us a request",
+    regionDialogSubtitle: "Send us a request about our work in this region.",
+    regions: {
+      cherkasy: "Cherkasy Oblast",
+      chernihiv: "Chernihiv Oblast",
+      chernivtsi: "Chernivtsi Oblast",
+      crimea: "Autonomous Republic of Crimea",
+      dnipropetrovsk: "Dnipropetrovsk Oblast",
+      donetsk: "Donetsk Oblast",
+      ivanoFrankivsk: "Ivano-Frankivsk Oblast",
+      kharkiv: "Kharkiv Oblast",
+      kherson: "Kherson Oblast",
+      khmelnytskyi: "Khmelnytskyi Oblast",
+      kirovohrad: "Kirovohrad Oblast",
+      kyivCity: "Kyiv",
+      kyivOblast: "Kyiv Oblast",
+      luhansk: "Luhansk Oblast",
+      lviv: "Lviv Oblast",
+      mykolaiv: "Mykolaiv Oblast",
+      odesa: "Odesa Oblast",
+      poltava: "Poltava Oblast",
+      rivne: "Rivne Oblast",
+      sumy: "Sumy Oblast",
+      ternopil: "Ternopil Oblast",
+      vinnytsia: "Vinnytsia Oblast",
+      volyn: "Volyn Oblast",
+      zakarpattia: "Zakarpattia Oblast",
+      zaporizhzhia: "Zaporizhzhia Oblast",
+      zhytomyr: "Zhytomyr Oblast",
+    },
   },
   team: {
     title: "Team",
   },
   partners: {
     title: "Partners",
+    partnerLabel: "Partner",
   },
   contacts: {
     title: "Contacts",
     orgName: "Humanitarian Recovery NGO",
+    officialNumber: "Official number",
+    followUs: "Follow us",
+    facebook: "Facebook",
+    instagram: "Instagram",
   },
   footer: {
-    copyright: "© 2022-2025 Humanitarian Recovery. All rights reserved.",
+    copyright: "© 2022-2026 Humanitarian Recovery. All rights reserved.",
   },
   educationRequest: {
     title: "Education Request",

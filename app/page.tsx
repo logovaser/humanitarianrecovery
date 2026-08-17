@@ -8,15 +8,20 @@ import { MineVictimAssistance } from "@/components/MineVictimAssistance";
 import { MissionVision } from "@/components/MissionVision";
 import { Partners } from "@/components/Partners";
 import { Team } from "@/components/Team";
+import { getPartners } from "@/lib/partners/service";
 import { getTeamMembers } from "@/lib/team/service";
 
 export default async function Home() {
-  const teamMembers = await getTeamMembers();
+  // Both read from R2; no reason to wait on one before starting the other.
+  const [teamMembers, partners] = await Promise.all([getTeamMembers(), getPartners()]);
 
   return (
     <main className="h-dvh max-h-dvh flex flex-col">
       <Header />
-      <div className="flex-1 mt-20 snap-y snap-mandatory overflow-x-hidden overflow-y-auto scroll-smooth">
+      <div
+        data-scroll-container
+        className="flex-1 mt-20 snap-y snap-mandatory overflow-x-hidden overflow-y-auto scroll-smooth"
+      >
         <Hero />
         <About />
         <MissionVision />
@@ -24,7 +29,7 @@ export default async function Home() {
         <MineVictimAssistance />
         <Geography />
         <Team members={teamMembers} />
-        <Partners />
+        <Partners partners={partners} />
         <Contacts />
       </div>
     </main>

@@ -10,7 +10,7 @@ export function Header() {
   const { t } = useLanguage();
 
   return (
-    <div className="fixed top-0 left-0 z-30 flex h-20 w-full items-center justify-between bg-brand px-8 font-bold text-white shadow-2xl">
+    <div className="fixed top-0 left-0 z-30 flex h-[88px] w-full items-center justify-between bg-brand px-8 font-bold text-white shadow-2xl">
       <Link href="/">
         <Image src={hrLogo.src} alt={t.common.logoAlt} width={164} height={64} />
       </Link>

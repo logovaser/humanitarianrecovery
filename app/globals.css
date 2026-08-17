@@ -13,6 +13,10 @@
   --color-footer: #b9b9b9;
 
   --font-sans: "Helvetica Neue", Helvetica, Arial, "Segoe UI", "Liberation Sans", sans-serif;
+
+  /* Shared content width for every section and page. Use max-w-site rather
+     than repeating a literal, so the whole site rewidens from one place. */
+  --container-site: 80rem;
 }
 
 html {
@@ -24,4 +28,91 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* A modal <dialog> renders in the top layer, but the page behind it still
+   scrolls, and with scroll snapping that means losing your place. */
+body:has(dialog[open]) [data-scroll-container] {
+  overflow: hidden;
+}
+
+/* Interactive regions of the Ukraine map. Kept in CSS rather than utility
+   classes because transform-box, the overlay layer and the reduced-motion
+   opt-out only make sense read together. */
+.map-region,
+.map-region-overlay {
+  fill: #2a8253;
+  fill-opacity: 0.565;
+  stroke: #38ad6e;
+  stroke-width: 1;
+  stroke-miterlimit: 8;
+  /* Without fill-box, scale resolves against the SVG's user-space origin and
+     flings the region across the map instead of growing it in place. */
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.map-region {
+  cursor: pointer;
+  transition:
+    scale 200ms ease-out,
+    fill-opacity 200ms ease-out,
+    stroke 200ms ease-out;
+}
+
+.map-region:hover,
+.map-region:focus-visible {
+  scale: 1.06;
+  fill-opacity: 0.92;
+  stroke: #ffffff;
+  outline: none;
+}
+
+.map-region:focus-visible {
+  stroke-width: 2;
+}
+
+/* SVG paints in document order, so a region that grows past its neighbours gets
+   its enlarged edge covered by every sibling drawn after it. Re-sorting the
+   paths would move a focused node and drop its focus, so the component paints a
+   non-interactive copy of the active region on top instead. */
+.map-region-overlay {
+  pointer-events: none;
+  fill-opacity: 0.92;
+  stroke: #ffffff;
+  paint-order: stroke fill;
+  animation: map-region-grow 200ms ease-out forwards;
+}
+
+@keyframes map-region-grow {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.06;
+  }
+}
+
+.map-outline {
+  fill: none;
+  stroke: #38ad6e;
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-region {
+    transition:
+      fill-opacity 200ms ease-out,
+      stroke 200ms ease-out;
+  }
+
+  .map-region:hover,
+  .map-region:focus-visible {
+    scale: 1;
+  }
+
+  .map-region-overlay {
+    animation: none;
+  }
 }

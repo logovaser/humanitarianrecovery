@@ -28,7 +28,7 @@ export function AlbumView({ album }: AlbumViewProps) {
 
   return (
     <div className="bg-white px-8 py-12 sm:px-12 sm:py-16">
-      <div className="mx-auto max-w-[1024px]">
+      <div className="mx-auto max-w-site">
         <Link
           href="/gallery"
           className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-brand transition-colors hover:text-brand-dark sm:mb-10"

@@ -39,6 +39,39 @@ export function EyeIcon(props: IconProps) {
   );
 }
 
+export function HeartIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 20.7 4.2 12.9a5.2 5.2 0 0 1 7.1-7.6l.7.6.7-.6a5.2 5.2 0 0 1 7.1 7.6Z" />
+    </svg>
+  );
+}
+
+export function ShieldIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 2.8 20 6v5.7c0 4.5-3.2 8.3-8 9.5-4.8-1.2-8-5-8-9.5V6Z" />
+      <path d="m8.6 12 2.4 2.4 4.4-4.6" />
+    </svg>
+  );
+}
+
 export function CrosshairIcon(props: IconProps) {
   return (
     <svg
@@ -77,6 +110,32 @@ export function PhoneIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
       <path d="M6.6 3.2c.5-.1 1 .1 1.3.6l1.7 3a1.3 1.3 0 0 1-.3 1.6l-1.2 1a.6.6 0 0 0-.1.7 11 11 0 0 0 4.6 4.6.6.6 0 0 0 .7-.1l1-1.2a1.3 1.3 0 0 1 1.6-.3l3 1.7c.5.3.7.8.6 1.3l-.6 2.5a1.5 1.5 0 0 1-1.6 1.1C10.8 22.4 1.6 13.2 1.6 4.6A1.5 1.5 0 0 1 2.7 3l2.5-.6Z" />
+    </svg>
+  );
+}
+
+export function FacebookIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M13.5 21.9v-8.1h2.7l.41-3.17h-3.11V8.6c0-.92.26-1.54 1.57-1.54h1.68V4.22c-.29-.04-1.29-.13-2.45-.13-2.43 0-4.09 1.48-4.09 4.2v2.34H7.5v3.17h2.71v8.1h3.29Z" />
+    </svg>
+  );
+}
+
+export function InstagramIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2" />
+      <circle cx="12" cy="12" r="4.1" />
+      <circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none" />
     </svg>
   );
 }
