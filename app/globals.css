@@ -19,6 +19,21 @@
   --container-site: 80rem;
 }
 
+/* One source of truth for the fixed header's height. Three places used to
+   carry their own number (88px in Header, mt-20 in page.tsx, 100dvh-72px in
+   PageSection), which left 8px of every section hidden behind the header and
+   made each section 8px taller than its scroll-snap slot. Deliberately a plain
+   custom property rather than a @theme token, so it can vary per breakpoint. */
+:root {
+  --header-height: 64px;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --header-height: 88px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

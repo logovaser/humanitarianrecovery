@@ -15,6 +15,8 @@ export const en = {
     gallery: "Gallery",
     educationRequest: "Education Request",
     events: "Events",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
   },
   hero: {
     line1: "Ukrainian National",

@@ -17,6 +17,8 @@ export const uk: Dictionary = {
     gallery: "Галерея",
     educationRequest: "Запит на навчання",
     events: "Події",
+    openMenu: "Відкрити меню",
+    closeMenu: "Закрити меню",
   },
   hero: {
     line1: "Український національний",

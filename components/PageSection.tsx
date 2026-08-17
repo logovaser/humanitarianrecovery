@@ -17,7 +17,7 @@ export function PageSection({ id, bg, bgImage, className, children }: PageSectio
          Children that used h-full to fill the old fixed height must use flex-1
          and have their section pass "flex flex-col" here, since height:100%
          does not resolve against a min-height parent. */
-      className={`relative min-h-[calc(100dvh-72px)] snap-start snap-always bg-cover bg-center  ${bgImage ? "" : bg ? `bg-linear-to-br ${bg}` : ""} ${className ?? ""}`}
+      className={`relative min-h-[calc(100dvh-var(--header-height))] snap-start snap-always bg-cover bg-center  ${bgImage ? "" : bg ? `bg-linear-to-br ${bg}` : ""} ${className ?? ""}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})` } : undefined}
     >
       {bgImage ? <div className={`absolute inset-0 bg-linear-to-br ${bg}`} aria-hidden /> : null}

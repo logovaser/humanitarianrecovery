@@ -5,7 +5,7 @@ export default function EducationRequestPage() {
   return (
     <div className="min-h-dvh bg-surface">
       <Header />
-      <main className="mx-auto max-w-xl px-6 pb-20 pt-32">
+      <main className="mx-auto max-w-xl px-6 pb-20 pt-[calc(var(--header-height)+2.5rem)]">
         <EducationRequestForm />
       </main>
     </div>

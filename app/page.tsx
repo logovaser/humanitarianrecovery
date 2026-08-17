@@ -20,7 +20,7 @@ export default async function Home() {
       <Header />
       <div
         data-scroll-container
-        className="flex-1 mt-20 snap-y snap-mandatory overflow-x-hidden overflow-y-auto scroll-smooth"
+        className="mt-[var(--header-height)] flex-1 snap-y snap-mandatory overflow-x-hidden overflow-y-auto scroll-smooth"
       >
         <Hero />
         <About />
