@@ -76,6 +76,21 @@ export const en = {
       humanitarianAssistance: "Humanitarian Assistance",
       mva: "MVA",
     },
+    glossaryHint: "Tap an abbreviation to see what it means",
+    glossary: {
+      eore: {
+        term: "Explosive Ordnance Risk Education",
+        text: "A humanitarian practice that teaches people how to spot, avoid and report dangerous war remnants such as landmines and unexploded bombs. These programmes reduce injuries and save lives in conflict-affected regions.",
+      },
+      nts: {
+        term: "Non-Technical Survey",
+        text: "Gathering and analysing information about suspected hazardous areas without disturbing the ground. Teams interview residents, review records and observe the terrain, building a clearer picture of where contamination is likely so that clearance effort goes where it is needed.",
+      },
+      mva: {
+        term: "Mine Victim Assistance",
+        text: "The support a person needs after an explosive ordnance accident: medical care and rehabilitation, psychological and social support, referral to legal services, and help returning to work and community life. It extends to families and to the wider community affected by a loss.",
+      },
+    },
   },
   mva: {
     title: "Mine Victim Assistance",

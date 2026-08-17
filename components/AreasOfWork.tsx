@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { AreaInfoDialog, type AreaId } from "@/components/AreaInfoDialog";
 import { PageSection } from "@/components/PageSection";
 import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -8,16 +10,20 @@ import areasImage from "@/images/image11.jpeg";
 
 export function AreasOfWork() {
   const { t } = useLanguage();
+  const [openArea, setOpenArea] = useState<AreaId | null>(null);
 
-  const rows: { tag: string | null; text: string }[] = [
-    { tag: t.areasOfWork.tags.eore, text: t.areasOfWork.eore },
-    { tag: t.areasOfWork.tags.nts, text: t.areasOfWork.nts },
+  /* id, not the label, keys the glossary: the Ukrainian tags read ІНРМ and НТО
+     rather than EORE and NTS. A null id is a tag with nothing to explain. */
+  const rows: { id: AreaId | null; tag: string | null; text: string }[] = [
+    { id: "eore", tag: t.areasOfWork.tags.eore, text: t.areasOfWork.eore },
+    { id: "nts", tag: t.areasOfWork.tags.nts, text: t.areasOfWork.nts },
     {
+      id: null,
       tag: t.areasOfWork.tags.humanitarianAssistance,
       text: t.areasOfWork.humanitarianAssistance,
     },
-    { tag: null, text: t.areasOfWork.communityTraining },
-    { tag: t.areasOfWork.tags.mva, text: t.areasOfWork.mva },
+    { id: null, tag: null, text: t.areasOfWork.communityTraining },
+    { id: "mva", tag: t.areasOfWork.tags.mva, text: t.areasOfWork.mva },
   ];
 
   return (
@@ -45,7 +51,16 @@ export function AreasOfWork() {
                 key={row.text}
                 className="flex items-center gap-4 rounded-full bg-white px-2.5 py-2.5 shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
               >
-                {row.tag ? (
+                {row.id ? (
+                  <button
+                    type="button"
+                    onClick={() => setOpenArea(row.id)}
+                    aria-label={`${row.tag}: ${t.areasOfWork.glossary[row.id].term}`}
+                    className="cursor-pointer whitespace-nowrap rounded-full bg-brand px-5 py-2.5 font-bold text-white transition-colors hover:bg-brand-dark focus-visible:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+                  >
+                    {row.tag}
+                  </button>
+                ) : row.tag ? (
                   <span className="whitespace-nowrap rounded-full bg-brand px-5 py-2.5 font-bold text-white">
                     {row.tag}
                   </span>
@@ -55,11 +70,15 @@ export function AreasOfWork() {
                 </span>
               </div>
             ))}
+
+            <p className="pl-2 pt-1 text-xs text-ink/60">{t.areasOfWork.glossaryHint}</p>
           </div>
         </div>
       </div>
 
       <SectionFooter />
+
+      <AreaInfoDialog area={openArea} onClose={() => setOpenArea(null)} />
     </PageSection>
   );
 }
