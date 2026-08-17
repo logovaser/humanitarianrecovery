@@ -1,7 +1,8 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
-import { GlobeIcon, MailIcon, PhoneIcon } from "@/components/icons";
+import { FacebookIcon, GlobeIcon, InstagramIcon, MailIcon, PhoneIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -11,23 +12,44 @@ const rows = [
     label: "humanitarianrecovery2022@gmail.com",
     href: "mailto:humanitarianrecovery2022@gmail.com",
     underline: true,
+    official: false,
   },
   {
     icon: <PhoneIcon className="h-5 w-5" />,
     label: "+380951818941",
     href: "tel:+380951818941",
     underline: false,
+    official: true,
   },
   {
     icon: <GlobeIcon className="h-5 w-5" />,
     label: "humanitarianrecovery.org.ua",
     href: "https://humanitarianrecovery.org.ua",
     underline: true,
+    official: false,
+  },
+];
+
+type SocialLink = { key: "facebook" | "instagram"; href: string; icon: ReactNode };
+
+/** Add the profile URLs to publish these buttons. Entries left blank render
+ *  nothing, so no dead links ship while the accounts are being confirmed. */
+const socialLinks: SocialLink[] = [
+  {
+    key: "facebook",
+    href: "https://www.facebook.com/share/18QFHnh716/?mibextid=wwXIfr",
+    icon: <FacebookIcon className="h-5 w-5" />,
+  },
+  {
+    key: "instagram",
+    href: "https://www.instagram.com/humanitarian_recovery",
+    icon: <InstagramIcon className="h-5 w-5" />,
   },
 ];
 
 export function Contacts() {
   const { t } = useLanguage();
+  const socials = socialLinks.filter((link) => link.href !== "");
 
   return (
     <PageSection id="contacts" className="grid grid-cols-1 p-0 md:grid-cols-2">
@@ -46,12 +68,13 @@ export function Contacts() {
 
       <div className="flex flex-col justify-center gap-7 bg-brand px-8 py-14 sm:px-14">
         <h3 className="text-3xl font-medium text-white sm:text-[34px]">{t.contacts.orgName}</h3>
-        <div className="space-y-5">
+
+        <div className="space-y-4">
           {rows.map((row) => (
             <a
               key={row.label}
               href={row.href}
-              className="flex items-center gap-4 rounded-full bg-white py-2.5 pl-2.5 pr-6 shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
+              className="flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-[26px] bg-white py-2.5 pl-2.5 pr-6 shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-dark text-white">
                 {row.icon}
@@ -63,9 +86,36 @@ export function Contacts() {
               >
                 {row.label}
               </span>
+              {row.official ? (
+                <span className="ml-auto shrink-0 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-dark">
+                  {t.contacts.officialNumber}
+                </span>
+              ) : null}
             </a>
           ))}
         </div>
+
+        {socials.length > 0 ? (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
+              {t.contacts.followUs}
+            </p>
+            <div className="mt-3 flex gap-2.5">
+              {socials.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={t.contacts[link.key]}
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-dark shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
     </PageSection>
   );

@@ -11,7 +11,7 @@ export function Hero() {
 
   return (
     <PageSection id="hero" bgImage={heroBg.src}>
-      <div className="absolute left-1/2 -top-10 z-0 -translate-x-1/2 flex flex-col items-center">
+      <div className="absolute left-1/2 -top-12 z-0 -translate-x-1/2 flex flex-col items-center">
         <div
           className="rounded-[48px] bg-white/15 backdrop-blur-[10px] px-6 pb-10 pt-20"
           aria-hidden="true"

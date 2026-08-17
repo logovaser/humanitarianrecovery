@@ -16,7 +16,7 @@ export function Gallery({ albums }: GalleryProps) {
 
   return (
     <div className="bg-white px-8 py-12 sm:px-12 sm:py-16">
-      <div className="mx-auto max-w-[1024px]">
+      <div className="mx-auto max-w-site">
         <h1 className="mb-12 text-center text-4xl font-bold tracking-wide text-ink-strong sm:mb-16 sm:text-5xl">
           {t.gallery.title}
         </h1>

@@ -23,6 +23,16 @@ No test suite exists.
 
 `app/page.tsx` renders the full single-page landing site as a scrollable container. Each section is a separate component under `components/`. The site mirrors the Humanitarian Recovery NGO's slide deck: Hero → About → Mission/Vision → Areas of Work → Mine Victim Assistance → Geography → Team → Partners → Contacts.
 
+### Interactive map
+
+The Geography section inlines an SVG map of Ukraine (`components/UkraineMap.tsx`) whose 26 regions are hoverable and clickable; clicking opens `RegionRequestDialog`, a native `<dialog>` wrapping `EducationRequestForm`.
+
+Path data lives in `lib/map/ukraine-regions.ts`, generated from `images/ukraine-map-dark.svg` by `scripts/generate-ukraine-regions.py`. Do not edit it by hand; regenerate instead. Region interaction styles are in `app/globals.css` under `.map-region`.
+
+### Contacts
+
+Facebook and Instagram buttons in `components/Contacts.tsx` are driven by the `socialLinks` array. Entries with an empty `href` are filtered out, so no dead links ship.
+
 ### Internationalization
 
 Client-side only. `LanguageProvider` (`components/LanguageProvider.tsx`) wraps the whole app, stores the active locale in `localStorage`, and exposes `{ locale, setLocale, t }` via `useLanguage()`. Dictionaries live in `lib/i18n/en.ts` and `lib/i18n/uk.ts`; `lib/i18n/types.ts` defines the `Dictionary` interface. All user-visible strings must come from the active dictionary — never hardcode text in components.

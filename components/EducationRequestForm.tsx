@@ -10,7 +10,12 @@ type CooperationType = (typeof cooperationTypes)[number];
 const inputCls =
   "w-full rounded-xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-brand";
 
-export function EducationRequestForm() {
+type EducationRequestFormProps = {
+  /** The dialog on the Geography map supplies its own heading. */
+  showHeading?: boolean;
+};
+
+export function EducationRequestForm({ showHeading = true }: EducationRequestFormProps = {}) {
   const { t } = useLanguage();
   const f = t.educationRequest;
   const [done, setDone] = useState(false);
@@ -31,8 +36,12 @@ export function EducationRequestForm() {
 
   return (
     <div>
-      <h1 className="mb-2 text-3xl font-bold text-ink-strong sm:text-4xl">{f.title}</h1>
-      <p className="mb-10 text-ink/70">{f.subtitle}</p>
+      {showHeading ? (
+        <>
+          <h1 className="mb-2 text-3xl font-bold text-ink-strong sm:text-4xl">{f.title}</h1>
+          <p className="mb-10 text-ink/70">{f.subtitle}</p>
+        </>
+      ) : null}
 
       {done ? (
         <div className="rounded-2xl bg-brand/8 px-8 py-10 text-center">

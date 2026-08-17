@@ -17,7 +17,7 @@ export function About() {
   ];
 
   return (
-    <PageSection id="about" bg="from-surface to-surface">
+    <PageSection id="about" bg="from-surface to-surface" className="flex flex-col">
       <header className="grid grid-cols-1 md:grid-cols-2">
         <div className="rounded-br-[55px] bg-brand px-8 py-8 sm:px-12 md:py-12">
           <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-[42px]">
@@ -33,7 +33,11 @@ export function About() {
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-[1024px] grid-cols-1 items-center gap-10 px-8 py-12 sm:px-12 md:grid-cols-2">
+      {/* flex-1 takes whatever height the header leaves, so this fills the
+          section. That only makes the box tall; content-center-safe is what
+          centres the row inside it, and the safe variant top-aligns rather than
+          clipping if the content ever outgrows a short viewport. */}
+      <div className="mx-auto grid max-w-site flex-1 grid-cols-1 content-center-safe items-center gap-10 px-8 py-12 sm:px-12 md:grid-cols-2">
         <div>
           <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-brand py-2 pl-2 pr-6 text-white shadow-sm">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-dark">
