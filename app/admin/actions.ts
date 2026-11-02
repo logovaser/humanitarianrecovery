@@ -14,12 +14,17 @@ import {
 import type { GalleryImage } from "@/lib/gallery/types";
 import { saveGalleryUpload } from "@/lib/gallery/upload";
 
-function revalidateGallery(slug?: string) {
+function revalidateGallery(...slugs: string[]) {
   revalidatePath("/gallery");
-  if (slug) {
+  for (const slug of new Set(slugs)) {
     revalidatePath(`/gallery/${slug}`);
   }
   revalidatePath("/admin/albums");
+}
+
+async function getAlbumSlug(albumId: string) {
+  const album = await getAlbumById(albumId);
+  return album ? [album.slug] : [];
 }
 
 export async function createAlbumAction(formData: FormData) {
@@ -45,6 +50,8 @@ export async function updateAlbumAction(albumId: string, formData: FormData) {
   const descriptionEn = formData.get("descriptionEn")?.toString() ?? "";
   const slug = formData.get("slug")?.toString();
 
+  // A slug change moves the page, so refresh the old URL as well as the new one.
+  const previousSlugs = await getAlbumSlug(albumId);
   const album = await updateAlbum(albumId, {
     titleUk,
     titleEn,
@@ -52,14 +59,15 @@ export async function updateAlbumAction(albumId: string, formData: FormData) {
     descriptionEn,
     slug,
   });
-  revalidateGallery(album.slug);
+  revalidateGallery(album.slug, ...previousSlugs);
   return album;
 }
 
 export async function deleteAlbumAction(albumId: string) {
   await requireAdminSession();
+  const slugs = await getAlbumSlug(albumId);
   await deleteAlbum(albumId);
-  revalidateGallery();
+  revalidateGallery(...slugs);
 }
 
 type UploadAlbumImageResult = { image: GalleryImage } | { error: string };
@@ -83,7 +91,7 @@ export async function uploadAlbumImageAction(
 
     const src = await saveGalleryUpload(file, album.slug);
     const image = await addImageToAlbum(albumId, src);
-    revalidateGallery();
+    revalidateGallery(album.slug);
     return { image };
   } catch (err) {
     return { error: err instanceof Error ? err.message : "Upload failed" };
@@ -93,11 +101,11 @@ export async function uploadAlbumImageAction(
 export async function deleteAlbumImageAction(albumId: string, imageId: string) {
   await requireAdminSession();
   await deleteImageFromAlbum(albumId, imageId);
-  revalidateGallery();
+  revalidateGallery(...(await getAlbumSlug(albumId)));
 }
 
 export async function setAlbumCoverAction(albumId: string, imageId: string) {
   await requireAdminSession();
   await setAlbumCover(albumId, imageId);
-  revalidateGallery();
+  revalidateGallery(...(await getAlbumSlug(albumId)));
 }
