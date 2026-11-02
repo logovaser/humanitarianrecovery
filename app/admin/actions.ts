@@ -11,6 +11,7 @@ import {
   setAlbumCover,
   updateAlbum,
 } from "@/lib/gallery/service";
+import type { GalleryImage } from "@/lib/gallery/types";
 import { saveGalleryUpload } from "@/lib/gallery/upload";
 
 function revalidateGallery(slug?: string) {
@@ -61,21 +62,32 @@ export async function deleteAlbumAction(albumId: string) {
   revalidateGallery();
 }
 
-export async function uploadAlbumImageAction(albumId: string, formData: FormData) {
+type UploadAlbumImageResult = { image: GalleryImage } | { error: string };
+
+// Returns the error in place of throwing it: production builds replace thrown
+// Server Action messages with a generic one, and the admin needs the reason.
+export async function uploadAlbumImageAction(
+  albumId: string,
+  formData: FormData,
+): Promise<UploadAlbumImageResult> {
   await requireAdminSession();
 
-  const file = formData.get("file");
-  if (!(file instanceof File) || file.size === 0) {
-    throw new Error("No image selected");
+  try {
+    const file = formData.get("file");
+    if (!(file instanceof File) || file.size === 0) {
+      return { error: "No image selected" };
+    }
+
+    const album = await getAlbumById(albumId);
+    if (!album) return { error: "Album not found" };
+
+    const src = await saveGalleryUpload(file, album.slug);
+    const image = await addImageToAlbum(albumId, src);
+    revalidateGallery();
+    return { image };
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : "Upload failed" };
   }
-
-  const album = await getAlbumById(albumId);
-  if (!album) throw new Error("Album not found");
-
-  const src = await saveGalleryUpload(file, album.slug);
-  const image = await addImageToAlbum(albumId, src);
-  revalidateGallery();
-  return image;
 }
 
 export async function deleteAlbumImageAction(albumId: string, imageId: string) {
