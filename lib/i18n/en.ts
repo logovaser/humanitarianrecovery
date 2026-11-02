@@ -202,6 +202,9 @@ export const en = {
     openImage: "Open image",
     previousImage: "Previous image",
     nextImage: "Next image",
+    noImages: "No images",
+    noImagesInAlbum: "This album has no images yet.",
+    noAlbums: "No albums available yet.",
     items: {
       events: "Organization events",
       demining: "Humanitarian demining of Ukraine",

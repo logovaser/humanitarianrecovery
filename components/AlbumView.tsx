@@ -73,7 +73,7 @@ export function AlbumView({ album }: AlbumViewProps) {
         </div>
 
         {album.images.length === 0 ? (
-          <p className="text-center text-ink/70">This album has no images yet.</p>
+          <p className="text-center text-ink/70">{t.gallery.noImagesInAlbum}</p>
         ) : null}
       </div>
 
