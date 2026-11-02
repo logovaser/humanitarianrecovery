@@ -199,6 +199,9 @@ export const en = {
   gallery: {
     title: "Gallery",
     backToGallery: "Back to gallery",
+    openImage: "Open image",
+    previousImage: "Previous image",
+    nextImage: "Next image",
     items: {
       events: "Organization events",
       demining: "Humanitarian demining of Ukraine",

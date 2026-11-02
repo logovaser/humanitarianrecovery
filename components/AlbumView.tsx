@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { AlbumLightbox } from "@/components/AlbumLightbox";
 import { useLanguage } from "@/components/LanguageProvider";
 import { getAlbumDescription, getAlbumTitle } from "@/lib/gallery/locale";
 import type { GalleryAlbum } from "@/lib/gallery/types";
@@ -26,6 +28,7 @@ export function AlbumView({ album }: AlbumViewProps) {
   const { t, locale } = useLanguage();
   const title = getAlbumTitle(album, locale);
   const description = getAlbumDescription(album, locale);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="bg-white px-8 py-12 sm:px-12 sm:py-16">
@@ -51,18 +54,21 @@ export function AlbumView({ album }: AlbumViewProps) {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
           {album.images.map((image, i) => (
-            <div
+            <button
               key={image.id}
-              className={`overflow-hidden rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.1)] ${imageAspects[i % imageAspects.length]}`}
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              aria-label={`${t.gallery.openImage} ${i + 1}`}
+              className={`group cursor-zoom-in overflow-hidden rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.1)] ${imageAspects[i % imageAspects.length]}`}
             >
               <Image
                 src={image.src}
                 alt=""
                 width={800}
                 height={640}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
               />
-            </div>
+            </button>
           ))}
         </div>
 
@@ -70,6 +76,14 @@ export function AlbumView({ album }: AlbumViewProps) {
           <p className="text-center text-ink/70">This album has no images yet.</p>
         ) : null}
       </div>
+
+      <AlbumLightbox
+        images={album.images}
+        index={openIndex}
+        title={title}
+        onIndexChange={setOpenIndex}
+        onClose={() => setOpenIndex(null)}
+      />
     </div>
   );
 }
