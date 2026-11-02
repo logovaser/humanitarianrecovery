@@ -42,7 +42,7 @@ export function Gallery({ albums }: GalleryProps) {
                     />
                   ) : (
                     <div className="flex aspect-16/10 w-full items-center justify-center bg-surface text-sm text-ink/50">
-                      No images
+                      {t.gallery.noImages}
                     </div>
                   )}
                 </Link>
@@ -57,7 +57,7 @@ export function Gallery({ albums }: GalleryProps) {
         </div>
 
         {albums.length === 0 ? (
-          <p className="text-center text-ink/70">No albums available yet.</p>
+          <p className="text-center text-ink/70">{t.gallery.noAlbums}</p>
         ) : null}
       </div>
     </div>

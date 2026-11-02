@@ -201,6 +201,12 @@ export const uk: Dictionary = {
   gallery: {
     title: "Галерея",
     backToGallery: "Назад до галереї",
+    openImage: "Відкрити зображення",
+    previousImage: "Попереднє зображення",
+    nextImage: "Наступне зображення",
+    noImages: "Немає зображень",
+    noImagesInAlbum: "У цьому альбомі ще немає зображень.",
+    noAlbums: "Альбомів поки немає.",
     items: {
       events: "Події організації",
       demining: "Гуманітарне розмінування України",

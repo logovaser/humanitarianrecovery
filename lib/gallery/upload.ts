@@ -1,14 +1,18 @@
+import {
+  ACCEPTED_IMAGE_TYPES,
+  ACCEPTED_IMAGE_TYPES_ERROR,
+  MAX_UPLOAD_BYTES,
+  MAX_UPLOAD_MB,
+} from "@/lib/gallery/limits";
 import { uploadToR2 } from "@/lib/gallery/r2";
 
-const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
-
 export async function saveGalleryUpload(file: File, albumSlug: string) {
-  if (!allowedTypes.has(file.type)) {
-    throw new Error("Only JPEG, PNG, WebP, and GIF images are allowed");
+  if (!ACCEPTED_IMAGE_TYPES.includes(file.type)) {
+    throw new Error(ACCEPTED_IMAGE_TYPES_ERROR);
   }
 
-  if (file.size > 10 * 1024 * 1024) {
-    throw new Error("Image must be smaller than 10 MB");
+  if (file.size > MAX_UPLOAD_BYTES) {
+    throw new Error(`Image must be smaller than ${MAX_UPLOAD_MB} MB`);
   }
 
   const ext = file.type.split("/")[1]?.replace("jpeg", "jpg") ?? "jpg";

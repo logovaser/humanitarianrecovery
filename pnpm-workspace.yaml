@@ -1,7 +1,7 @@
 minimumReleaseAge: 0
 overrides:
-  next: '16.2.7'
-  postcss@<8.5.10: ^8.5.10
+  next: '16.4.4'
+  postcss@<8.5.23: ^8.5.23
 allowBuilds:
   '@ampproject/toolbox-optimizer': false
   es5-ext: false
@@ -31,3 +31,8 @@ minimumReleaseAgeExclude:
   - 'react'
   - 'react-dom'
   - 'next-auth'
+auditConfig:
+  ignoreGhsas:
+    # minimatch <11.0.1 (moderate ReDoS). Only ESLint and its plugins use it, and
+    # they still require minimatch 3.x/10.x. Remove once they move to 11.x.
+    - GHSA-g3hv-75wg-m249

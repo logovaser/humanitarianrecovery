@@ -54,6 +54,26 @@ export function AlbumForm({ album }: AlbumFormProps) {
       </label>
 
       <label className="block space-y-1">
+        <span className="text-sm font-semibold">Description (Ukrainian, optional)</span>
+        <textarea
+          name="descriptionUk"
+          rows={4}
+          defaultValue={album?.descriptionUk ?? ""}
+          className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-brand"
+        />
+      </label>
+
+      <label className="block space-y-1">
+        <span className="text-sm font-semibold">Description (English, optional)</span>
+        <textarea
+          name="descriptionEn"
+          rows={4}
+          defaultValue={album?.descriptionEn ?? ""}
+          className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-brand"
+        />
+      </label>
+
+      <label className="block space-y-1">
         <span className="text-sm font-semibold">URL slug</span>
         <input
           name="slug"

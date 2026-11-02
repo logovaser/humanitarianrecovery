@@ -43,7 +43,7 @@ Public routes: `/gallery` (album list) and `/gallery/[albumId]` (album detail).
 
 Admin routes under `app/admin/(protected)/albums/` manage albums and images.
 
-Data persisted to `data/gallery.json` (created on first read, seeded from `lib/gallery/seed.ts`). All reads/writes go through `lib/gallery/store.ts`; business logic in `lib/gallery/service.ts`. Uploads saved to `public/uploads/gallery/` (max 10 MB, JPEG/PNG/WebP/GIF only).
+Data persisted to `data/gallery.json` (created on first read, seeded from `lib/gallery/seed.ts`). All reads/writes go through `lib/gallery/store.ts`; business logic in `lib/gallery/service.ts`. Uploads saved to `public/uploads/gallery/` (max 5 MB, JPEG/PNG/WebP/GIF only). The limit and accepted types live in `lib/gallery/limits.ts`; `serverActions.bodySizeLimit` in `next.config.ts` must stay about 1 MB above `MAX_UPLOAD_MB`.
 
 Server Actions for all gallery mutations live in `app/admin/actions.ts`. Each action calls `requireAdminSession()` before doing any work.
 
