@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
-import { getAlbumTitle } from "@/lib/gallery/locale";
+import { getAlbumDescription, getAlbumTitle } from "@/lib/gallery/locale";
 import type { GalleryAlbum } from "@/lib/gallery/types";
 
 const imageAspects = [
@@ -25,6 +25,7 @@ type AlbumViewProps = {
 export function AlbumView({ album }: AlbumViewProps) {
   const { t, locale } = useLanguage();
   const title = getAlbumTitle(album, locale);
+  const description = getAlbumDescription(album, locale);
 
   return (
     <div className="bg-white px-8 py-12 sm:px-12 sm:py-16">
@@ -36,9 +37,17 @@ export function AlbumView({ album }: AlbumViewProps) {
           ← {t.gallery.backToGallery}
         </Link>
 
-        <h1 className="mb-12 text-center text-3xl font-bold tracking-wide text-ink-strong sm:mb-16 sm:text-4xl">
+        <h1
+          className={`text-center text-3xl font-bold tracking-wide text-ink-strong sm:text-4xl ${description ? "mb-6" : "mb-12 sm:mb-16"}`}
+        >
           {title}
         </h1>
+
+        {description ? (
+          <p className="mb-12 whitespace-pre-line text-left text-sm text-ink sm:mb-16 sm:text-base">
+            {description}
+          </p>
+        ) : null}
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
           {album.images.map((image, i) => (

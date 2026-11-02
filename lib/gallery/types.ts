@@ -9,6 +9,8 @@ export type GalleryAlbum = {
   slug: string;
   titleUk: string;
   titleEn: string;
+  descriptionUk?: string;
+  descriptionEn?: string;
   coverImageId: string | null;
   images: GalleryImage[];
   sortOrder: number;
@@ -23,5 +25,7 @@ export type GalleryData = {
 export type AlbumInput = {
   titleUk: string;
   titleEn: string;
+  descriptionUk?: string;
+  descriptionEn?: string;
   slug?: string;
 };

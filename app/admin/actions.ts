@@ -26,9 +26,11 @@ export async function createAlbumAction(formData: FormData) {
 
   const titleUk = formData.get("titleUk")?.toString() ?? "";
   const titleEn = formData.get("titleEn")?.toString() ?? "";
+  const descriptionUk = formData.get("descriptionUk")?.toString() ?? "";
+  const descriptionEn = formData.get("descriptionEn")?.toString() ?? "";
   const slug = formData.get("slug")?.toString();
 
-  const album = await createAlbum({ titleUk, titleEn, slug });
+  const album = await createAlbum({ titleUk, titleEn, descriptionUk, descriptionEn, slug });
   revalidateGallery(album.slug);
   return album;
 }
@@ -38,9 +40,17 @@ export async function updateAlbumAction(albumId: string, formData: FormData) {
 
   const titleUk = formData.get("titleUk")?.toString() ?? "";
   const titleEn = formData.get("titleEn")?.toString() ?? "";
+  const descriptionUk = formData.get("descriptionUk")?.toString() ?? "";
+  const descriptionEn = formData.get("descriptionEn")?.toString() ?? "";
   const slug = formData.get("slug")?.toString();
 
-  const album = await updateAlbum(albumId, { titleUk, titleEn, slug });
+  const album = await updateAlbum(albumId, {
+    titleUk,
+    titleEn,
+    descriptionUk,
+    descriptionEn,
+    slug,
+  });
   revalidateGallery(album.slug);
   return album;
 }

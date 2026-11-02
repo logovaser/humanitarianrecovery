@@ -59,6 +59,8 @@ export async function createAlbum(input: AlbumInput) {
     slug,
     titleUk: input.titleUk.trim(),
     titleEn: input.titleEn.trim(),
+    descriptionUk: input.descriptionUk?.trim() ?? "",
+    descriptionEn: input.descriptionEn?.trim() ?? "",
     coverImageId: null,
     images: [],
     sortOrder: data.albums.length,
@@ -89,6 +91,8 @@ export async function updateAlbum(id: string, input: AlbumInput) {
     slug,
     titleUk: input.titleUk.trim(),
     titleEn: input.titleEn.trim(),
+    descriptionUk: input.descriptionUk?.trim() ?? "",
+    descriptionEn: input.descriptionEn?.trim() ?? "",
     updatedAt: new Date().toISOString(),
   };
 
