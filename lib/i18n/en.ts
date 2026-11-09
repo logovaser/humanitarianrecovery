@@ -15,6 +15,7 @@ export const en = {
     gallery: "Gallery",
     educationRequest: "Education Request",
     events: "Events",
+    contacts: "Contacts",
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },

@@ -16,6 +16,7 @@ export function Header() {
     { href: "/gallery", label: t.header.gallery },
     { href: "/education-request", label: t.header.educationRequest },
     { href: "/", label: t.header.events },
+    { href: "/#contacts", label: t.header.contacts },
   ];
 
   // The panel covers the page, so Escape has to dismiss it.
