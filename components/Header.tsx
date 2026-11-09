@@ -45,7 +45,9 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-2 md:flex">
+        {/* lg, not md: four links plus the switcher need about 900px, and at
+            768px "Education Request" wraps onto two lines. */}
+        <nav className="hidden items-center gap-2 lg:flex">
           {links.map((link) => (
             <Link key={link.label} href={link.href} className="p-4">
               {link.label}
@@ -58,7 +60,7 @@ export function Header() {
 
         {/* The switcher stays out of the panel: on a bilingual site, changing
             language should not be two taps deep. */}
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
           <LanguageSwitcher />
           <button
             type="button"
@@ -74,7 +76,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <nav id="mobile-nav" className="border-t border-white/15 px-5 pb-4 md:hidden">
+        <nav id="mobile-nav" className="border-t border-white/15 px-5 pb-4 lg:hidden">
           {links.map((link) => (
             <Link
               key={link.label}

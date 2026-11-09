@@ -1,7 +1,6 @@
 import { About } from "@/components/About";
 import { AreasOfWork } from "@/components/AreasOfWork";
 import { Contacts } from "@/components/Contacts";
-import { Footer } from "@/components/Footer";
 import { Geography } from "@/components/Geography";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -32,7 +31,6 @@ export default async function Home() {
         <Team members={teamMembers} />
         <Partners partners={partners} />
         <Contacts />
-        <Footer />
       </div>
     </main>
   );

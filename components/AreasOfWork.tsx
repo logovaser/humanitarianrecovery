@@ -39,8 +39,11 @@ export function AreasOfWork() {
             <Image
               src={areasImage.src}
               alt={t.areasOfWork.imageAlt}
+              /* 335x362 claimed a taller box than the 1033x689 file, so the
+                 section shrank when the lazy image loaded and threw off
+                 smooth scrolls to #contacts. */
               width={335}
-              height={362}
+              height={223}
               className="h-full w-full object-cover"
             />
           </div>
