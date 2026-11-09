@@ -8,12 +8,12 @@ import { MineVictimAssistance } from "@/components/MineVictimAssistance";
 import { MissionVision } from "@/components/MissionVision";
 import { Partners } from "@/components/Partners";
 import { Team } from "@/components/Team";
-import { getPartners } from "@/lib/partners/service";
-import { getTeamMembers } from "@/lib/team/service";
+import { getCachedPartners } from "@/lib/partners/service";
+import { getCachedTeamMembers } from "@/lib/team/service";
 
 export default async function Home() {
   // Both read from R2; no reason to wait on one before starting the other.
-  const [teamMembers, partners] = await Promise.all([getTeamMembers(), getPartners()]);
+  const [teamMembers, partners] = await Promise.all([getCachedTeamMembers(), getCachedPartners()]);
 
   return (
     <main className="h-dvh max-h-dvh flex flex-col">

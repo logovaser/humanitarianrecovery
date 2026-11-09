@@ -35,7 +35,7 @@ Facebook and Instagram buttons in `components/Contacts.tsx` are driven by the `s
 
 ### Internationalization
 
-Client-side only. `LanguageProvider` (`components/LanguageProvider.tsx`) wraps the whole app, stores the active locale in `localStorage`, and exposes `{ locale, setLocale, t }` via `useLanguage()`. Dictionaries live in `lib/i18n/en.ts` and `lib/i18n/uk.ts`; `lib/i18n/types.ts` defines the `Dictionary` interface. All user-visible strings must come from the active dictionary — never hardcode text in components.
+`LanguageProvider` (`components/LanguageProvider.tsx`) wraps the whole app and exposes `{ locale, setLocale, t }` via `useLanguage()`. The active locale lives in the `locale` cookie; `app/layout.tsx` reads it so the server renders the visitor's language and Ukrainian visitors never see English first. Reading the cookie makes every route render per request. Dictionaries live in `lib/i18n/en.ts` and `lib/i18n/uk.ts`; `lib/i18n/types.ts` defines the `Dictionary` interface. All user-visible strings must come from the active dictionary — never hardcode text in components.
 
 ### Gallery
 
@@ -55,6 +55,8 @@ Required env vars:
 - `AUTH_SECRET` — NextAuth secret
 - `ADMIN_EMAILS` (or `ADMIN_EMAIL`) — comma-separated list of allowed admin emails
 - `ADMIN_PASSWORD_HASH` — bcrypt hash (preferred), or `ADMIN_PASSWORD` — plain text fallback
+
+Optional: `SITE_URL` — public origin for link previews, `sitemap.xml` and `robots.txt` (defaults to `https://humanitarianrecovery.org.ua`, see `lib/site.ts`).
 
 Middleware (`middleware.ts`) guards all `/admin` routes, redirecting unauthenticated requests to `/admin/login`.
 

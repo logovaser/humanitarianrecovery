@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
+import { Footer } from "@/components/Footer";
 import { FacebookIcon, GlobeIcon, InstagramIcon, MailIcon, PhoneIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -13,6 +14,9 @@ const rows = [
     href: "mailto:humanitarianrecovery2022@gmail.com",
     underline: true,
     official: false,
+    // The address is the longest label; only it needs the smaller phone size
+    // to stay on one line beside its icon.
+    compact: true,
   },
   {
     icon: <PhoneIcon className="h-5 w-5" />,
@@ -20,6 +24,7 @@ const rows = [
     href: "tel:+380951818941",
     underline: false,
     official: true,
+    compact: false,
   },
   {
     icon: <GlobeIcon className="h-5 w-5" />,
@@ -27,6 +32,7 @@ const rows = [
     href: "https://humanitarianrecovery.org.ua",
     underline: true,
     official: false,
+    compact: false,
   },
 ];
 
@@ -52,71 +58,76 @@ export function Contacts() {
   const socials = socialLinks.filter((link) => link.href !== "");
 
   return (
-    <PageSection id="contacts" className="grid grid-cols-1 p-0 md:grid-cols-2">
-      <div className="flex flex-col bg-brand-dark px-8 py-12 sm:px-14">
-        <h2 className="text-5xl font-bold text-white sm:text-6xl">{t.contacts.title}</h2>
-        <div className="flex flex-1 items-center justify-center py-10">
-          <Image
-            src="/images/logo-white.png"
-            alt={t.common.orgName}
-            width={340}
-            height={270}
-            className="w-[62%] max-w-[300px]"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col justify-center gap-7 bg-brand px-8 py-14 sm:px-14">
-        <h3 className="text-3xl font-medium text-white sm:text-[34px]">{t.contacts.orgName}</h3>
-
-        <div className="space-y-4">
-          {rows.map((row) => (
-            <a
-              key={row.label}
-              href={row.href}
-              className="flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-[26px] bg-white py-2.5 pl-2.5 pr-6 shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-dark text-white">
-                {row.icon}
-              </span>
-              <span
-                className={`break-all text-[15px] text-ink sm:text-base ${
-                  row.underline ? "underline" : ""
-                }`}
-              >
-                {row.label}
-              </span>
-              {row.official ? (
-                <span className="ml-auto shrink-0 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-dark">
-                  {t.contacts.officialNumber}
-                </span>
-              ) : null}
-            </a>
-          ))}
-        </div>
-
-        {socials.length > 0 ? (
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
-              {t.contacts.followUs}
-            </p>
-            <div className="mt-3 flex gap-2.5">
-              {socials.map((link) => (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={t.contacts[link.key]}
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-dark shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
+    // The footer lives inside the last section: any content after the final
+    // snap area makes hash links to #contacts overshoot the section top.
+    <PageSection id="contacts" className="flex flex-col p-0">
+      <div className="grid flex-1 grid-cols-1 md:grid-cols-2">
+        <div className="flex flex-col bg-brand-dark px-5 py-12 sm:px-14">
+          <h2 className="text-5xl font-bold text-white sm:text-6xl">{t.contacts.title}</h2>
+          <div className="flex flex-1 items-center justify-center py-10">
+            <Image
+              src="/images/logo-white.png"
+              alt={t.common.orgName}
+              width={340}
+              height={270}
+              className="w-[62%] max-w-[300px]"
+            />
           </div>
-        ) : null}
+        </div>
+
+        <div className="flex flex-col justify-center gap-7 bg-brand px-5 py-14 sm:px-14">
+          <h3 className="text-2xl font-medium text-white sm:text-[34px]">{t.contacts.orgName}</h3>
+
+          <div className="space-y-4">
+            {rows.map((row) => (
+              <a
+                key={row.label}
+                href={row.href}
+                className="flex items-center gap-3 rounded-[26px] bg-white py-2 pl-2 pr-4 sm:gap-4 sm:py-2.5 sm:pl-2.5 sm:pr-6 shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-dark text-white sm:h-11 sm:w-11">
+                  {row.icon}
+                </span>
+                <span
+                  className={`min-w-0 break-all text-ink sm:text-base ${
+                    row.compact ? "text-[13px]" : "text-[15px]"
+                  } ${row.underline ? "underline" : ""}`}
+                >
+                  {row.label}
+                </span>
+                {row.official ? (
+                  <span className="ml-auto shrink-0 rounded-full bg-brand/10 px-2 py-1 text-[10px] sm:px-3 sm:text-xs font-semibold uppercase tracking-wide text-brand-dark">
+                    {t.contacts.officialNumber}
+                  </span>
+                ) : null}
+              </a>
+            ))}
+          </div>
+
+          {socials.length > 0 ? (
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
+                {t.contacts.followUs}
+              </p>
+              <div className="mt-3 flex gap-2.5">
+                {socials.map((link) => (
+                  <a
+                    key={link.key}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={t.contacts[link.key]}
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-dark shadow-[0_6px_18px_rgba(0,0,0,0.12)] transition-transform hover:-translate-y-0.5"
+                  >
+                    {link.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
       </div>
+      <Footer />
     </PageSection>
   );
 }

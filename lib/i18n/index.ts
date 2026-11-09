@@ -10,6 +10,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
   uk,
 };
 
+// A cookie, not localStorage: the server reads it to render the visitor's
+// language into the HTML, so Ukrainian visitors never see English first.
+export const LOCALE_COOKIE = "locale";
+
+export function toLocale(value: string | undefined): Locale {
+  return value === "uk" ? "uk" : "en";
+}
+
 export const localeLabels: Record<Locale, string> = {
   en: "EN",
   uk: "UA",

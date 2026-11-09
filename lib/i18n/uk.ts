@@ -17,6 +17,7 @@ export const uk: Dictionary = {
     gallery: "Галерея",
     educationRequest: "Запит на навчання",
     events: "Події",
+    contacts: "Контакти",
     openMenu: "Відкрити меню",
     closeMenu: "Закрити меню",
   },
@@ -179,7 +180,7 @@ export const uk: Dictionary = {
     instagram: "Instagram",
   },
   footer: {
-    copyright: "© 2022-2026 Humanitarian Recovery. Усі права захищені.",
+    copyright: "Humanitarian Recovery. Усі права захищені.",
   },
   educationRequest: {
     title: "Запит на навчання",

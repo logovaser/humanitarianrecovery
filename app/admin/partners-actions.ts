@@ -1,9 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { uploadToR2 } from "@/lib/gallery/r2";
 import { requireAdminSession } from "@/lib/auth/session";
-import { addPartner, deletePartner, updatePartner } from "@/lib/partners/service";
+import { PARTNERS_TAG, addPartner, deletePartner, updatePartner } from "@/lib/partners/service";
 
 const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
 
@@ -17,6 +17,7 @@ async function uploadLogo(file: File): Promise<string> {
 }
 
 function revalidatePartners() {
+  updateTag(PARTNERS_TAG);
   revalidatePath("/");
   revalidatePath("/admin/partners");
 }

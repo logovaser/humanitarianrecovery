@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { PartnerManager } from "@/components/admin/PartnerManager";
 import { getPartners } from "@/lib/partners/service";

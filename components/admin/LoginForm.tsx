@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState, useTransition } from "react";
 
 export function LoginForm() {
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -21,7 +23,7 @@ export function LoginForm() {
         return;
       }
 
-      window.location.href = "/admin/albums";
+      router.replace("/admin/albums");
     });
   }
 

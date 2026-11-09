@@ -1,12 +1,13 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { requireAdminSession } from "@/lib/auth/session";
 import {
   addImageToAlbum,
   createAlbum,
   deleteAlbum,
   deleteImageFromAlbum,
+  GALLERY_TAG,
   getAlbumById,
   setAlbumCover,
   updateAlbum,
@@ -15,6 +16,7 @@ import type { GalleryImage } from "@/lib/gallery/types";
 import { saveGalleryUpload } from "@/lib/gallery/upload";
 
 function revalidateGallery(...slugs: string[]) {
+  updateTag(GALLERY_TAG);
   revalidatePath("/gallery");
   for (const slug of new Set(slugs)) {
     revalidatePath(`/gallery/${slug}`);

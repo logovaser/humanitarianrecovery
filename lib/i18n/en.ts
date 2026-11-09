@@ -15,6 +15,7 @@ export const en = {
     gallery: "Gallery",
     educationRequest: "Education Request",
     events: "Events",
+    contacts: "Contacts",
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },
@@ -177,7 +178,7 @@ export const en = {
     instagram: "Instagram",
   },
   footer: {
-    copyright: "© 2022-2026 Humanitarian Recovery. All rights reserved.",
+    copyright: "Humanitarian Recovery. All rights reserved.",
   },
   educationRequest: {
     title: "Education Request",

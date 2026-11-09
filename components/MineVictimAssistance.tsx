@@ -39,8 +39,11 @@ export function MineVictimAssistance() {
             <Image
               src={mvaImage.src}
               alt={t.mva.imageAlt}
+              /* 335x362 claimed a taller box than the 1236x979 file, so the
+                 section shrank when the lazy image loaded and threw off
+                 smooth scrolls to #contacts. */
               width={335}
-              height={362}
+              height={265}
               className="h-full w-full object-cover translate-z-1.5"
             />
           </div>
