@@ -14,6 +14,9 @@ const rows = [
     href: "mailto:humanitarianrecovery2022@gmail.com",
     underline: true,
     official: false,
+    // The address is the longest label; only it needs the smaller phone size
+    // to stay on one line beside its icon.
+    compact: true,
   },
   {
     icon: <PhoneIcon className="h-5 w-5" />,
@@ -21,6 +24,7 @@ const rows = [
     href: "tel:+380951818941",
     underline: false,
     official: true,
+    compact: false,
   },
   {
     icon: <GlobeIcon className="h-5 w-5" />,
@@ -28,6 +32,7 @@ const rows = [
     href: "https://humanitarianrecovery.org.ua",
     underline: true,
     official: false,
+    compact: false,
   },
 ];
 
@@ -71,9 +76,7 @@ export function Contacts() {
         </div>
 
         <div className="flex flex-col justify-center gap-7 bg-brand px-5 py-14 sm:px-14">
-          <h3 className="text-2xl font-medium text-white sm:text-[34px]">
-            {t.contacts.orgName}
-          </h3>
+          <h3 className="text-2xl font-medium text-white sm:text-[34px]">{t.contacts.orgName}</h3>
 
           <div className="space-y-4">
             {rows.map((row) => (
@@ -86,9 +89,9 @@ export function Contacts() {
                   {row.icon}
                 </span>
                 <span
-                  className={`min-w-0 break-all text-[13px] text-ink sm:text-base ${
-                    row.underline ? "underline" : ""
-                  }`}
+                  className={`min-w-0 break-all text-ink sm:text-base ${
+                    row.compact ? "text-[13px]" : "text-[15px]"
+                  } ${row.underline ? "underline" : ""}`}
                 >
                   {row.label}
                 </span>

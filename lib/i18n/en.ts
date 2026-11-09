@@ -178,7 +178,7 @@ export const en = {
     instagram: "Instagram",
   },
   footer: {
-    copyright: "© 2022-2026 Humanitarian Recovery. All rights reserved.",
+    copyright: "Humanitarian Recovery. All rights reserved.",
   },
   educationRequest: {
     title: "Education Request",

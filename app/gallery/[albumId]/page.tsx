@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { AlbumView } from "@/components/AlbumView";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { getAlbumBySlug } from "@/lib/gallery/service";
 
@@ -18,8 +19,11 @@ export default async function AlbumPage({ params }: AlbumPageProps) {
   return (
     <main className="flex h-dvh flex-col">
       <Header />
-      <div className="mt-[var(--header-height)] flex-1 overflow-y-auto scroll-smooth">
-        <AlbumView album={album} />
+      <div className="mt-[var(--header-height)] flex flex-1 flex-col overflow-y-auto scroll-smooth">
+        <div className="flex-1">
+          <AlbumView album={album} />
+        </div>
+        <Footer />
       </div>
     </main>
   );

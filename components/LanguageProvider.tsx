@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { dictionaries, type Dictionary, type Locale, locales } from "@/lib/i18n";
+import { dictionaries, type Dictionary, LOCALE_COOKIE, type Locale } from "@/lib/i18n";
 
 type LanguageContextValue = {
   locale: Locale;
@@ -11,17 +11,16 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "locale";
+const ONE_YEAR = 60 * 60 * 24 * 365;
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && locales.includes(stored as Locale)) {
-      setLocaleState(stored as Locale);
-    }
-  }, []);
+export function LanguageProvider({
+  initialLocale,
+  children,
+}: {
+  initialLocale: Locale;
+  children: React.ReactNode;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   useEffect(() => {
     const dictionary = dictionaries[locale];
@@ -36,7 +35,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
-    localStorage.setItem(STORAGE_KEY, next);
+    document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=${ONE_YEAR}; samesite=lax`;
   }, []);
 
   return (

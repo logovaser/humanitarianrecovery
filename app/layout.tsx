@@ -1,24 +1,35 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
-import { en } from "@/lib/i18n/en";
+import { dictionaries, LOCALE_COOKIE, toLocale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: en.meta.title,
-  description: en.meta.description,
-  icons: { icon: "/images/logo-green.png" },
-};
+async function getLocale() {
+  const cookieStore = await cookies();
+  return toLocale(cookieStore.get(LOCALE_COOKIE)?.value);
+}
 
-export default function RootLayout({
+export async function generateMetadata(): Promise<Metadata> {
+  const { meta } = dictionaries[await getLocale()];
+  return {
+    title: meta.title,
+    description: meta.description,
+    icons: { icon: "/images/logo-green.png" },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" className="h-full antialiased" data-scroll-behavior="smooth">
+    <html lang={locale} className="h-full antialiased" data-scroll-behavior="smooth">
       <body className="h-full">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider initialLocale={locale}>{children}</LanguageProvider>
       </body>
     </html>
   );
