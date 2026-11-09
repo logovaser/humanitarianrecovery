@@ -1,10 +1,10 @@
 import { Footer } from "@/components/Footer";
 import { Gallery } from "@/components/Gallery";
 import { Header } from "@/components/Header";
-import { getAlbums } from "@/lib/gallery/service";
+import { getCachedAlbums } from "@/lib/gallery/service";
 
 export default async function GalleryPage() {
-  const albums = await getAlbums();
+  const albums = await getCachedAlbums();
 
   return (
     <main className="flex h-dvh flex-col">

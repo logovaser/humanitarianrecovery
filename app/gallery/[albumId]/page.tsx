@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { AlbumView } from "@/components/AlbumView";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { getAlbumBySlug } from "@/lib/gallery/service";
+import { getCachedAlbumBySlug } from "@/lib/gallery/service";
 
 type AlbumPageProps = {
   params: Promise<{ albumId: string }>;
@@ -10,7 +10,7 @@ type AlbumPageProps = {
 
 export default async function AlbumPage({ params }: AlbumPageProps) {
   const { albumId } = await params;
-  const album = await getAlbumBySlug(albumId);
+  const album = await getCachedAlbumBySlug(albumId);
 
   if (!album) {
     notFound();

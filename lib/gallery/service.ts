@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 import { unlink } from "fs/promises";
 import path from "path";
+import { unstable_cache } from "next/cache";
 import { deleteFromR2, isR2Url } from "@/lib/gallery/r2";
 import { readGalleryData, writeGalleryData } from "@/lib/gallery/store";
 import type { AlbumInput, GalleryAlbum, GalleryImage } from "@/lib/gallery/types";
@@ -36,6 +37,21 @@ export async function getAlbumBySlug(slug: string) {
   if (!album) return undefined;
   return { ...album, images: sortImages(album.images) };
 }
+
+export const GALLERY_TAG = "gallery";
+
+// Public pages read through the cached getter. Admin pages and actions call
+// the uncached one, so a read-modify-write never starts from stale data. The
+// 5-minute expiry bounds how long an R2 error (read as empty data) can stick.
+export const getCachedAlbums = unstable_cache(getAlbums, ["gallery-albums"], {
+  tags: [GALLERY_TAG],
+  revalidate: 300,
+});
+
+export const getCachedAlbumBySlug = unstable_cache(getAlbumBySlug, ["gallery-album-by-slug"], {
+  tags: [GALLERY_TAG],
+  revalidate: 300,
+});
 
 export async function getAlbumById(id: string) {
   const data = await readGalleryData();

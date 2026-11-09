@@ -1,4 +1,5 @@
 import { randomUUID } from "crypto";
+import { unstable_cache } from "next/cache";
 import { deleteFromR2, isR2Url } from "@/lib/gallery/r2";
 import { readPartnersData, writePartnersData } from "@/lib/partners/store";
 import type { Partner } from "@/lib/partners/types";
@@ -9,6 +10,16 @@ export async function getPartners(): Promise<Partner[]> {
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((partner) => ({ ...partner, description: partner.description ?? "" }));
 }
+
+export const PARTNERS_TAG = "partners";
+
+// Public pages read through the cached getter. Admin pages and actions call
+// the uncached one, so a read-modify-write never starts from stale data. The
+// 5-minute expiry bounds how long an R2 error (read as empty data) can stick.
+export const getCachedPartners = unstable_cache(getPartners, ["partners"], {
+  tags: [PARTNERS_TAG],
+  revalidate: 300,
+});
 
 export async function addPartner(input: {
   name: string;

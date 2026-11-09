@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { uploadToR2WithPrefix } from "@/lib/gallery/r2";
 import { requireAdminSession } from "@/lib/auth/session";
 import {
@@ -9,8 +9,15 @@ import {
   removeTeamMemberPhoto,
   reorderTeamMembers,
   setTeamMemberPhoto,
+  TEAM_TAG,
   updateTeamMember,
 } from "@/lib/team/service";
+
+function revalidateTeam() {
+  updateTag(TEAM_TAG);
+  revalidatePath("/");
+  revalidatePath("/admin/team");
+}
 
 const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
 
@@ -42,8 +49,7 @@ export async function createTeamMemberAction(formData: FormData) {
     pointsUk: parsePoints(formData.get("pointsUk") as string),
   });
 
-  revalidatePath("/");
-  revalidatePath("/admin/team");
+  revalidateTeam();
   return member;
 }
 
@@ -68,15 +74,13 @@ export async function updateTeamMemberAction(id: string, formData: FormData) {
     pointsUk: parsePoints(formData.get("pointsUk") as string),
   });
 
-  revalidatePath("/");
-  revalidatePath("/admin/team");
+  revalidateTeam();
 }
 
 export async function deleteTeamMemberAction(id: string) {
   await requireAdminSession();
   await deleteTeamMember(id);
-  revalidatePath("/");
-  revalidatePath("/admin/team");
+  revalidateTeam();
 }
 
 export async function uploadTeamPhotoAction(memberId: string, formData: FormData) {
@@ -92,20 +96,17 @@ export async function uploadTeamPhotoAction(memberId: string, formData: FormData
   const src = await uploadToR2WithPrefix(buffer, file.type, ext, `team/${memberId}`);
 
   await setTeamMemberPhoto(memberId, src);
-  revalidatePath("/");
-  revalidatePath("/admin/team");
+  revalidateTeam();
 }
 
 export async function removeTeamPhotoAction(memberId: string) {
   await requireAdminSession();
   await removeTeamMemberPhoto(memberId);
-  revalidatePath("/");
-  revalidatePath("/admin/team");
+  revalidateTeam();
 }
 
 export async function reorderTeamMembersAction(ids: string[]) {
   await requireAdminSession();
   await reorderTeamMembers(ids);
-  revalidatePath("/");
-  revalidatePath("/admin/team");
+  revalidateTeam();
 }
