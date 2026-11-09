@@ -2,7 +2,6 @@
 
 import { EyeIcon, HeartIcon, ShieldIcon, TargetIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
-import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function MissionVision() {
@@ -53,8 +52,6 @@ export function MissionVision() {
         icon={ShieldIcon}
         list={t.missionVision.principlesList}
       />
-
-      <SectionFooter showLogo={false} />
     </PageSection>
   );
 }
