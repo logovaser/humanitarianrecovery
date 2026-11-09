@@ -4,6 +4,7 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 import { dictionaries, LOCALE_COOKIE, toLocale } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/site";
 
 async function getLocale() {
   const cookieStore = await cookies();
@@ -11,11 +12,22 @@ async function getLocale() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { meta } = dictionaries[await getLocale()];
+  const locale = await getLocale();
+  const { meta } = dictionaries[locale];
   return {
+    metadataBase: new URL(SITE_URL),
     title: meta.title,
     description: meta.description,
     icons: { icon: "/images/logo-green.png" },
+    // app/opengraph-image.tsx supplies the preview image for every route.
+    openGraph: {
+      type: "website",
+      siteName: "Humanitarian Recovery",
+      title: meta.title,
+      description: meta.description,
+      locale: locale === "uk" ? "uk_UA" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title: meta.title, description: meta.description },
   };
 }
 

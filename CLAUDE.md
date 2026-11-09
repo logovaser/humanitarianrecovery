@@ -56,6 +56,8 @@ Required env vars:
 - `ADMIN_EMAILS` (or `ADMIN_EMAIL`) — comma-separated list of allowed admin emails
 - `ADMIN_PASSWORD_HASH` — bcrypt hash (preferred), or `ADMIN_PASSWORD` — plain text fallback
 
+Optional: `SITE_URL` — public origin for link previews, `sitemap.xml` and `robots.txt` (defaults to `https://humanitarianrecovery.org.ua`, see `lib/site.ts`).
+
 Middleware (`middleware.ts`) guards all `/admin` routes, redirecting unauthenticated requests to `/admin/login`.
 
 ### Import style
