@@ -58,16 +58,18 @@ export function AreasOfWork() {
                     type="button"
                     onClick={() => setOpenArea(row.id)}
                     aria-label={`${row.tag}: ${t.areasOfWork.glossary[row.id].term}`}
-                    className="cursor-pointer whitespace-nowrap rounded-full bg-brand px-5 py-2.5 font-bold text-white transition-colors hover:bg-brand-dark focus-visible:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+                    className="max-w-[45%] shrink-0 cursor-pointer rounded-full bg-brand px-5 py-2.5 text-center leading-tight sm:max-w-none sm:whitespace-nowrap font-bold text-white transition-colors hover:bg-brand-dark focus-visible:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
                   >
                     {row.tag}
                   </button>
                 ) : row.tag ? (
-                  <span className="whitespace-nowrap rounded-full bg-brand px-5 py-2.5 font-bold text-white">
+                  <span className="max-w-[45%] shrink-0 rounded-full bg-brand px-5 py-2.5 text-center font-bold leading-tight text-white sm:max-w-none sm:whitespace-nowrap">
                     {row.tag}
                   </span>
                 ) : null}
-                <span className={`text-[15px] text-ink sm:text-base ${row.tag ? "" : "px-4 py-1"}`}>
+                <span
+                  className={`min-w-0 flex-1 pr-3 text-[15px] leading-snug text-ink sm:text-base ${row.tag ? "" : "px-4 py-1"}`}
+                >
                   {row.text}
                 </span>
               </div>
