@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { CrosshairIcon } from "@/components/icons";
 import { PageSection } from "@/components/PageSection";
-import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 import aboutImage from "@/images/image10.png";
 
@@ -75,8 +74,6 @@ export function About() {
           className="h-auto rounded-3xl shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
         />
       </div>
-
-      <SectionFooter />
     </PageSection>
   );
 }

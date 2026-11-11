@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { PageSection } from "@/components/PageSection";
-import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 import mvaImage from "@/images/image12.jpeg";
 
@@ -88,8 +87,6 @@ export function MineVictimAssistance() {
           <p className="mt-3 text-[11px] leading-snug text-ink/50">{t.mva.statsSource}</p>
         </div>
       </div>
-
-      <SectionFooter />
     </PageSection>
   );
 }
