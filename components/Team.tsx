@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { PageSection } from "@/components/PageSection";
-import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { TeamMember } from "@/lib/team/types";
 
@@ -95,8 +94,6 @@ export function Team({ members }: TeamProps) {
           );
         })}
       </div>
-
-      <SectionFooter />
     </PageSection>
   );
 }

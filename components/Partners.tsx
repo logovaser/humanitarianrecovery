@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { PageSection } from "@/components/PageSection";
 import { PartnerDialog } from "@/components/PartnerDialog";
-import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Partner } from "@/lib/partners/types";
 
@@ -76,8 +75,6 @@ export function Partners({ partners }: PartnersProps) {
           })}
         </div>
       </div>
-
-      <SectionFooter variant="green" />
 
       <PartnerDialog partner={selected} onClose={() => setSelected(null)} />
     </PageSection>

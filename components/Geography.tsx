@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { PageSection } from "@/components/PageSection";
 import { RegionRequestDialog } from "@/components/RegionRequestDialog";
-import { SectionFooter } from "@/components/SectionFooter";
 import { UkraineMap } from "@/components/UkraineMap";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { RegionId } from "@/lib/map/ukraine-regions";
@@ -31,8 +30,6 @@ export function Geography() {
           className="min-h-0 w-full flex-1 self-center lg:h-full lg:max-h-[85%]"
         />
       </div>
-
-      <SectionFooter variant="green" />
 
       <RegionRequestDialog region={selected} onClose={() => setSelected(null)} />
     </PageSection>

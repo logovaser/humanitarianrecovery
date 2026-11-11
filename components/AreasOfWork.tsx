@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { AreaInfoDialog, type AreaId } from "@/components/AreaInfoDialog";
 import { PageSection } from "@/components/PageSection";
-import { SectionFooter } from "@/components/SectionFooter";
 import { useLanguage } from "@/components/LanguageProvider";
 import areasImage from "@/images/image11.jpeg";
 
@@ -78,8 +77,6 @@ export function AreasOfWork() {
           </div>
         </div>
       </div>
-
-      <SectionFooter />
 
       <AreaInfoDialog area={openArea} onClose={() => setOpenArea(null)} />
     </PageSection>
